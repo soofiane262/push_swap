@@ -6,11 +6,11 @@
 /*   By: sel-mars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:21:08 by sel-mars          #+#    #+#             */
-/*   Updated: 2021/12/28 15:00:19 by sel-mars         ###   ########.fr       */
+/*   Updated: 2022/01/01 12:05:11 by sel-mars         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
 static char	**ft_zerosplit(void)
 {
