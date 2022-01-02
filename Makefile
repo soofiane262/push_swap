@@ -20,7 +20,7 @@ RM		=	rm -f
 
 CFLAGS	=	-Wall -Wextra -Werror
 
-SRCS	=	push_swap_ext01.c push_swap_ext02.c
+SRCS	=	push_swap_ext01.c push_swap_ext02.c push_swap_ext03.c
 
 OBJS	=	$(SRCS:.c=.o)
 

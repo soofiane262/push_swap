@@ -7,8 +7,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
+make: *** No rule to make target `push_swap_ext03.o', needed by `push_swap'.  Stop.
+ 
 
-# Make data base, printed on Fri Dec 31 20:51:53 2021
+# Make data base, printed on Sun Jan  2 20:42:49 2022
 
 # Variables
 
@@ -25,13 +27,14 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/sel-mars/Desktop/42Cursus/06_push_swap/WIP
+CURDIR := /Users/sel-mars/Desktop/42Cursus/06_push_swap/06_push_swap_WIP
 # makefile
 SHELL = /bin/sh
 # makefile (from `Makefile', line 19)
 RM = rm -f
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+ 
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 21)
@@ -43,11 +46,11 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 25)
 OBJS = $(SRCS:.c=.o)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cd6000339h/T/vscode-ipc-e42c416e-8ab5-4fa7-923b-a5f54fad9cbb.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cd6000339h/T/vscode-ipc-0a4dc62f-08e8-4fc6-a30b-21b0cb17655c.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.uX6jTpGrLd/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.4VdKOOhb6Q/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -65,13 +68,13 @@ LIB = libpush_swap.a
 # makefile (from `Makefile', line 27)
 PGM = push_swap.c
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.PsndZNSi4n/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.6ApOuOGRwf/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/sel-mars/Desktop/42Cursus/06_push_swap/WIP
+PWD = /Users/sel-mars/Desktop/42Cursus/06_push_swap/06_push_swap_WIP
 # makefile (from `Makefile', line 29)
 HDFL = push_swap.h
 # environment
@@ -81,7 +84,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProce
 # environment
 HOME = /Users/sel-mars
 # default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/sel-mars/Library/Application Support/Code/CachedData/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247
 # environment
@@ -101,7 +104,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from `Makefile', line 23)
-SRCS = push_swap_ext01.c push_swap_ext02.c
+SRCS = push_swap_ext01.c push_swap_ext02.c push_swap_ext03.c
 # environment
 SHLVL = 1
 # makefile (from `Makefile', line 15)
@@ -119,7 +122,7 @@ LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
 # environment
@@ -135,13 +138,15 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.1220
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000002.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x18D30:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -150,6 +155,8 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a9
 # automatic
 ^F = $(notdir $^)
 # default
@@ -161,9 +168,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1343
+VSCODE_PID = 1284
 # variable set hash-table stats:
-# Load=75/1024=7%, Rehash=0, Collisions=7/119=6%
+# Load=77/1024=8%, Rehash=0, Collisions=5/107=5%
 
 # Pattern-specific Variable Values
 
@@ -171,9 +178,9 @@ VSCODE_PID = 1343
 
 # Directories
 
-# . (device 16777227, inode 3681491): 14 files, no impossibilities.
+# . (device 16777227, inode 3703134): 17 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 17 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -184,7 +191,7 @@ VSCODE_PID = 1343
 # Not a target:
 push_swap_ext01.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-31 20:51:44
+#  Last modified 2022-01-02 20:41:07
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -192,27 +199,23 @@ push_swap_ext01.o:
 
 # Not a target:
 push_swap.c:
-#  Implicit rule search has been done.
-#  Last modified 2021-12-31 20:50:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 all: push_swap
 #  Phony target (prerequisite of .PHONY).
 #  Command-line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
+#  File has not been updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/14=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 push_swap_ext02.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-31 20:51:44
+#  Last modified 2022-01-02 20:41:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -225,12 +228,9 @@ push_swap_ext02.o:
 
 # Not a target:
 push_swap.h:
-#  Implicit rule search has been done.
-#  Last modified 2021-12-31 18:16:37
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .SUFFIXES:
@@ -241,9 +241,17 @@ push_swap.h:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-31 20:51:03
+#  Last modified 2022-01-02 20:42:26
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+push_swap_ext03.o:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -287,30 +295,12 @@ clean:
 	@$(RM) $(OBJS)
 	
 
-push_swap: push_swap_ext01.o push_swap_ext02.o push_swap.c push_swap.h
+push_swap: push_swap_ext01.o push_swap_ext02.o push_swap_ext03.o push_swap.c push_swap.h
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: `'
-#  Last modified 2021-12-31 20:49:29
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := push_swap
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := push_swap_ext01.o push_swap_ext02.o push_swap.c push_swap.h
-# automatic
-# | := 
-# automatic
-# < := push_swap_ext01.o
-# automatic
-# ^ := push_swap_ext01.o push_swap_ext02.o push_swap.c push_swap.h
-# automatic
-# ? := push_swap_ext01.o push_swap_ext02.o push_swap.c
+#  Last modified 2022-01-02 20:41:08
+#  File has not been updated.
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/22=9%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 36):
 	@(cd libft/; make;)
 	@$(CC) $(CFLAGS) -c $(SRCS) -I $(HDFL)
@@ -319,7 +309,7 @@ push_swap: push_swap_ext01.o push_swap_ext02.o push_swap.c push_swap.h
 	
 
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=0/40=0%
+# Load=15/1024=1%, Rehash=0, Collisions=0/41=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -331,7 +321,6 @@ push_swap: push_swap_ext01.o push_swap_ext02.o push_swap.c push_swap.h
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
- 
-# Finished Make data base on Fri Dec 31 20:51:53 2021
+# Finished Make data base on Sun Jan  2 20:42:49 2022
 
  
