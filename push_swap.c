@@ -13,94 +13,6 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
-
-// int	ft_check_sort_a(int full_len, int **a, int *ref)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	*refa;
-
-// 	refa = ft_refa(full_len, ref, *a);
-// 	i = 0;
-// 	while ((*a)[i] != refa[0])
-// 		i++;
-// 	j = 0;
-// 	while (j < ft_len(full_len, 'a') - 1)
-// 	{
-// 		if ((*a)[i] != refa[j])
-// 			return (0);
-// 		if (i == ft_len(full_len, 'a') - 1)
-// 			i = 0;
-// 		else
-// 			i++;
-// 		j++;
-// 	}
-// 	while ((*a)[0] != refa[0])
-// 		ft_r(*a, ft_len(full_len, 'a'), "a");
-// 	return (1);
-// }
-
-// int	ft_check_sort_b(int full_len, int **b, int *ref)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	*refb;
-
-// 	refb = ft_refb(full_len, ref, *b);
-// 	i = 0;
-// 	while ((*b)[i] != refb[0])
-// 		i++;
-// 	j = 0;
-// 	while (j < ft_len(full_len, 'b') - 1)
-// 	{
-// 		if ((*b)[i] != refb[j])
-// 			return (0);
-// 		if (i == ft_len(full_len, 'b') - 1)
-// 			i = 0;
-// 		else
-// 			i++;
-// 		j++;
-// 	}
-// 	while ((*b)[0] != refb[0])
-// 		ft_r(*b, ft_len(full_len, 'b'), "b");
-// 	return (1);
-// }
-
-// void	ft_sort(int full_len, int **a, int **b, int *ref)
-// {
-// 	int	i = 0;
-// 	// while (!ft_check_sort_a(full_len, a, ref)
-// 	// 	|| !ft_check_sort_b(full_len, b, ref))
-// 	while (i < 10)
-// 	{
-// 		ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-// 		ft_putstr_fd("i	", 1);
-// 		ft_putnbr_fd(i, 1);
-// 		ft_putstr_fd("\n\n", 1);
-// 		ft_putchar_fd('a', 1);
-// 		ft_putnbrs(ft_len(full_len, 'a'), *a);
-// 		ft_putchar_fd('b', 1);
-// 		ft_putnbrs(ft_len(full_len, 'b'), *b);
-// 		ft_putstr_fd("---------------------------------------------------------\n", 1);
-// 		if ((*a)[0] > (*a)[1])
-// 			ft_s(*a, "a");
-// 		if ((*b)[0] < (*b)[1])
-// 			ft_s(*b, "b");
-// 		if (!ft_check_sort_a(full_len, a, ref))
-// 			ft_r(*a, ft_len(full_len, 'a'), "a");
-// 		if (!ft_check_sort_b(full_len, b, ref))
-// 			ft_r(*b, ft_len(full_len, 'b'), "b");
-// 		i++;
-// 	}
-// 	ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-// 	ft_putchar_fd('a', 1);
-// 	ft_putnbrs(ft_len(full_len, 'a'), *a);
-// 	ft_putchar_fd('b', 1);
-// 	ft_putnbrs(ft_len(full_len, 'b'), *b);
-// 	ft_putstr_fd("---------------------------------------------------------\n", 1);
-// 	ft_pa(a, *b, full_len);
-// }
-
 int	*ft_make_b(int full_len, int **a)
 {
 	int	i;
@@ -137,8 +49,15 @@ int	*ft_make_b(int full_len, int **a)
 
 void	ft_sort(int full_len, int **a, int **b, int **refs)
 {
-	// while (full_len - refs[1][1])
-	// {
+	int	i;
+	int	j;
+
+	while (full_len - refs[1][1])
+	// while (i < 3)
+	{
+		j = 0;
+		while(i < refs[1][full_len] && a[i])
+		i = 0;
 		if ((*b)[0] == refs[0][0])
 		{
 			ft_p(b, a, full_len - refs[1][1], refs[1][1]);
@@ -152,8 +71,49 @@ void	ft_sort(int full_len, int **a, int **b, int **refs)
 			refs[1][1]++;
 			ft_r(*a, refs[1][1], "a");
 		}
-	// 	while ((*b)[0] != refs[0][i])
-	// }
+		i = 0;
+		while (i < refs[1][1] && (*a)[i] < (*b)[0])
+			i++;
+		if ((i == 0 || i == 1))
+		{
+ft_putstr_fd("\ncheckk", 1);
+			ft_p(b, a, full_len - refs[1][1], refs[1][1]);
+			ft_putendl_fd("pb", 1);
+			refs[1][1]++;
+			if (i == 1)
+				ft_s(*a, "a");
+		}
+		if (i == refs[1][1])
+		{
+			i = 0;
+			while (i < refs[1][1] && (*a)[i] > (*b)[0])
+			i++;
+			if (i == 0)
+			{
+				ft_p(b, a, full_len - refs[1][1], refs[1][1]);
+				ft_putendl_fd("pb", 1);
+				refs[1][1]++;
+				ft_r(*a, refs[1][1], "a");
+			}
+		}
+			while (i)
+			{
+				ft_r(*a, refs[1][1], "a");
+				i--;
+			}
+
+ft_putstr_fd("\na", 1);
+ft_putnbrs(refs[1][1], *a);
+ft_putstr_fd("b", 1);
+ft_putnbrs(full_len - refs[1][1], *b);
+	}
+// 	while ((*a)[0] != refs[0][0])
+// 	{
+// 		ft_r(*a, refs[1][1], "a");
+// ft_putstr_fd("\ncheckk", 1);
+
+// 	}
+
 }
 
 int	main(int ac, char **av)
@@ -186,15 +146,18 @@ int	main(int ac, char **av)
 	ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
 
 	ft_putstr_fd("a", 1);
-	ft_putnbrs(3, a);
+	ft_putnbrs(refs[1][1], a);
 	ft_putstr_fd("b", 1);
-	ft_putnbrs(4, b);
+	ft_putnbrs(ac - refs[1][1] - 1, b);
 
 	ft_putstr_fd("---------------------------------------------------------\n\n", 1);
 
 	ft_sort(ac - 1, &a, &b, refs);
 
-
+	// ft_putstr_fd("a", 1);
+	// ft_putnbrs(3, a);
+	// ft_putstr_fd("b", 1);
+	// ft_putnbrs(4, b);
 
 	ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
 
