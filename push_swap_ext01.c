@@ -66,21 +66,39 @@ int	*ft_ref(int ac, int *a)
 	return (ref);
 }
 
-int	*ft_refa(int len, int *ref, int *a)
+int	*ft_refa(int *ref, int *a, int full_len)
 {
 	int	i;
-	int	var;
-	int	*refa;
+	int	j;
+	int	temp[2];
+	int	*actual;
 
-	var = len / 2;
-	refa = (int *)malloc(sizeof(int) * var);
-	ft_exit(refa, a, ref, NULL);
-	if (var * 2 != len)
-		var++;
+	actual = (int *)malloc(sizeof(int));
 	i = 0;
-	while (var < len)
-		refa[i++] = ref[var++];
-	return (refa);
+	actual[0] = 0;
+	actual[1] = 0;
+	while(i < full_len)
+	{
+		j = 0;
+		temp[0] = i;
+		temp[1] = 0;
+		while (a[i] && ref[j] && a[i] != ref[j])
+			j++;
+		while (a[i] && ref[j] && a[i] == ref[j])
+		{
+			temp[1]++;
+			i++;
+			j++;
+		}
+		if (actual[1] < temp[1])
+		{
+			actual[0] = temp[0];
+			actual[1] = temp[1];
+		}
+		if (a[i] && ref[j] && a[i] == ref[j])
+			i++;
+	}
+	return (actual);
 }
 
 int	*ft_refb(int len, int *ref, int *a)

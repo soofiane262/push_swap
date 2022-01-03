@@ -13,43 +13,6 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
-int	*ft_make_b(int full_len, int **a)
-{
-	int	i;
-	int	blen;
-	int	*b;
-	int	*ref;
-	int	*refb;
-
-	ref = ft_ref(full_len, *a);
-	refb = ft_refb(--full_len, ref, *a);
-	blen = ft_len(full_len, 'b');
-	b = (int *)malloc(sizeof(int) * blen);
-	ft_exit(b, *a, ref, refb);
-	i = 0;
-	while (i < blen)
-	{
-		if ((*a)[0] > (*a)[1])
-			ft_s(*a, "a");
-		if ((*a)[0] <= refb[0])
-		{
-			ft_pb(a, b, i, full_len - i);
-			ft_check_for_sb(b, i++);
-	ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-	ft_putstr_fd("i	", 1);
-	ft_putnbr_fd(i, 1);
-	ft_putstr_fd("\n\n", 1);
-	ft_putchar_fd('a', 1);
-	ft_putnbrs(ft_len(full_len, 'a'), *a);
-	ft_putchar_fd('b', 1);
-	ft_putnbrs(ft_len(full_len, 'b'), b);
-	ft_putstr_fd("---------------------------------------------------------\n", 1);
-		}
-		else
-			ft_r(*a, full_len - i, "a");
-	}
-	return (b);
-}
 
 // int	ft_check_sort_a(int full_len, int **a, int *ref)
 // {
@@ -138,35 +101,109 @@ int	*ft_make_b(int full_len, int **a)
 // 	ft_pa(a, *b, full_len);
 // }
 
-void	ft_sort(int full_len, int **a, int **b, int *ref)
+int	*ft_make_b(int full_len, int **a)
 {
-	(void)full_len;
-	(void)a;
-	(void)b;
-	(void)ref;
+	int	i;
+	int	alen;
+	int	*b;
+	int	*ref;
+	int	*refa;
+
+	ref = ft_ref(full_len--, *a);
+	refa = ft_refa(ref, *a, full_len);
+	alen = refa[1];
+	b = (int *)malloc(sizeof(int));
+	i = 0;
+	while (i < refa[0])
+	{
+		ft_p(a, &b, full_len - i, i);
+		ft_putendl_fd("pb", 1);
+		i++;
+	}
+	while (alen)
+	{
+		ft_r(*a, full_len - i, "a");
+		alen--;
+	}
+	while (full_len - i != refa[1])
+	{
+		ft_p(a, &b, full_len - i, i);
+		ft_putendl_fd("pb", 1);
+		i++;
+
+	}
+	return (b);
+}
+
+void	ft_sort(int full_len, int **a, int **b, int **refs)
+{
+	// while (full_len - refs[1][1])
+	// {
+		if ((*b)[0] == refs[0][0])
+		{
+			ft_p(b, a, full_len - refs[1][1], refs[1][1]);
+			ft_putendl_fd("pb", 1);
+			refs[1][1]++;
+		}
+		if ((*b)[0] == refs[0][full_len - 1])
+		{
+			ft_p(b, a, full_len - refs[1][1], refs[1][1]);
+			ft_putendl_fd("pb", 1);
+			refs[1][1]++;
+			ft_r(*a, refs[1][1], "a");
+		}
+	// 	while ((*b)[0] != refs[0][i])
+	// }
 }
 
 int	main(int ac, char **av)
 {
 	int	*a;
-	// int	*b;
-	int	*ref;
+	int	*b;
+	int	**refs;
 
 	a = ft_args_check(ac, av);
-	ref = ft_ref(ac, a);
+	refs = (int **)malloc(sizeof(int *) * 2);
+	refs[0] = ft_ref(ac, a);
+	refs[1] = ft_refa(refs[0], a, ac - 1);
+
+
 	ft_putstr_fd("---------------------------------------------------------\n\n", 1);
 	ft_putstr_fd("a", 1);
 	ft_putnbrs(ac - 1, a);
 	ft_putstr_fd("ref", 1);
-	ft_putnbrs(ac - 1, ref);
+	ft_putnbrs(ac - 1, refs[0]);
 	ft_putstr_fd("refa", 1);
-	ft_putnbrs(ft_len(ac - 1, 'a'), ft_refa(ac, ref, a));
+	ft_putnbrs(2, refs[1]);
 	ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-	// b = ft_make_b(ac, &a);
-	// ft_sort(ac - 1, &a, &b, ref);
-	ft_putstr_fd("sorted", 1);
-	ft_putnbrs(ac - 1, a);
+
+
+
+
+	b = ft_make_b(ac, &a);
+
+
+	ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
+
+	ft_putstr_fd("a", 1);
+	ft_putnbrs(3, a);
+	ft_putstr_fd("b", 1);
+	ft_putnbrs(4, b);
+
+	ft_putstr_fd("---------------------------------------------------------\n\n", 1);
+
+	ft_sort(ac - 1, &a, &b, refs);
+
+
+
+	ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
+
+	// ft_putstr_fd("sorted", 1);
+	// ft_putnbrs(ac - 1, a);
 	ft_putstr_fd("---------------------------------------------------------\n", 1);
 	ft_putstr_fd("\n", 1);
+
+
+
 	return (0);
 }

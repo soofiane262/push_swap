@@ -13,20 +13,27 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	ft_pb(int **a, int *b, int l, int full_len)
+void	ft_p(int **x, int **y, int xlen, int ylen)
 {
-	int	*temp;
+	int	i;
+	int	temp;
+	int	*ptrx;
+	int	*ptry;
 
-	while (l >= 0)
+	temp = (*x)[0];
+	i = ylen;
+	ptry = ft_intdup(*y, ylen + 1);
+	free(*y);
+	*y = ptry;
+	while (i > 0)
 	{
-		*(b + l + 1) = *(b + l);
-		l--;
+		(*y)[i] = (*y)[i - 1];
+		i--;
 	}
-	*b = (*a)[0];
-	temp = ft_intdup(*a + 1, full_len - 1);
-	free(*a);
-	*a = temp;
-	ft_putendl_fd("pb", 1);
+	(*y)[0] = temp;
+	ptrx = ft_intdup((*x + 1), xlen - 1);
+	free(*x);
+	*x = ptrx;
 }
 
 void	ft_pa(int **a, int *b, int full_len)
