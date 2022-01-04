@@ -13,16 +13,6 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
-int	ft_len(int x, char c)
-{
-	int	ret;
-
-	ret = x / 2;
-	if (ret * 2 != x && c == 'b')
-		ret++;
-	return (ret);
-}
-
 int	*ft_intdup(int *x, int len)
 {
 	int	i;
@@ -66,56 +56,31 @@ int	*ft_ref(int ac, int *a)
 	return (ref);
 }
 
-int	*ft_refa(int *ref, int *a, int full_len)
+int	*ft_refa(int *a, int full_len)
 {
 	int	i;
-	int	j;
 	int	temp[2];
 	int	*actual;
 
-	actual = (int *)malloc(sizeof(int));
+	actual = (int *)malloc(sizeof(int) * 2);
 	i = 0;
 	actual[0] = 0;
 	actual[1] = 0;
 	while(i < full_len)
 	{
-		j = 0;
 		temp[0] = i;
 		temp[1] = 0;
-		while (a[i] && ref[j] && a[i] != ref[j])
-			j++;
-		while (a[i] && ref[j] && a[i] == ref[j])
+		while (i + 1 < full_len && a[i] < a[i + 1])
 		{
 			temp[1]++;
 			i++;
-			j++;
 		}
 		if (actual[1] < temp[1])
 		{
 			actual[0] = temp[0];
-			actual[1] = temp[1];
+			actual[1] = temp[1] + 1;
 		}
-		if (a[i] && ref[j] && a[i] == ref[j])
-			i++;
+		i++;
 	}
 	return (actual);
-}
-
-int	*ft_refb(int len, int *ref, int *a)
-{
-	int	i;
-	int	j;
-	int	var;
-	int	*refb;
-
-	var = len / 2;
-	refb = (int *)malloc(sizeof(int) * var);
-	ft_exit(refb, a, ref, NULL);
-	if (var * 2 != len)
-		var++;
-	j = var - 1;
-	i = 0;
-	while (i < var)
-		refb[i++] = ref[j--];
-	return (refb);
 }

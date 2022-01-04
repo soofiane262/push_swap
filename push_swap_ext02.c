@@ -37,7 +37,7 @@ void	ft_exit(int *x, int *y, int *z, int *t)
 			free(z);
 		if (t)
 			free(t);
-		exit(0);
+		exit(1);
 	}	
 }
 

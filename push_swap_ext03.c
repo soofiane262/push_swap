@@ -36,31 +36,6 @@ void	ft_p(int **x, int **y, int xlen, int ylen)
 	*x = ptrx;
 }
 
-void	ft_pa(int **a, int *b, int full_len)
-{
-	int	i;
-	int	j;
-	int	alen;
-	int	blen;
-	int	*temp;
-
-	alen = ft_len(full_len, 'a');
-	blen = ft_len(full_len, 'b');
-	temp = (int *)malloc(sizeof(int) * alen);
-	ft_exit(temp, *a, b, 0);
-	i = 0;
-	while (blen)
-	{
-		temp[i++] = b[--blen];
-		ft_putendl_fd("pa", 1);
-	}
-	j = 0;
-	while (j < alen)
-		temp[i++] = (*a)[j++];
-	free(*a);
-	*a = temp;
-}
-
 void	ft_s(int *x, char *c)
 {
 	int	temp;
@@ -87,10 +62,18 @@ void	ft_r(int *x, int xlen, char *c)
 	ft_putendl_fd(ft_strjoin("r", c), 1);
 }
 
-void	ft_check_for_sb(int *b, int i)
+void	ft_rr(int *x, int xlen, char *c)
 {
-	if (i && b[0] < b[1])
+	int	i;
+	int	temp;
+
+	temp = x[xlen - 1];
+	i = xlen - 1;
+	while (i > 0)
 	{
-		ft_s(b, "b");
+		*(x + i) = *(x + i - 1);
+		i--;
 	}
+	*(x) = temp;
+	ft_putendl_fd(ft_strjoin("rr", c), 1);
 }
