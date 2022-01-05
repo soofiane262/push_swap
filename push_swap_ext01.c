@@ -56,29 +56,77 @@ int	*ft_ref(int ac, int *a)
 	return (ref);
 }
 
+// int	*ft_refa(int *a, int full_len)
+// {
+// 	int	i;
+// 	int	temp[2];
+// 	int	*actual;
+
+// 	actual = (int *)malloc(sizeof(int) * 2);
+// 	i = 0;
+// 	actual[0] = 0;
+// 	actual[1] = 0;
+// 	while(i < full_len)
+// 	{
+// 		temp[0] = i;
+// 		temp[1] = 0;
+// 		while (i + 1 < full_len && a[i] < a[i + 1])
+// 		{
+// 			temp[1]++;
+// 			i++;
+// 		}
+// 		if (actual[1] < temp[1])
+// 		{
+// 			actual[0] = temp[0];
+// 			actual[1] = temp[1] + 1;
+// 		}
+// 		i++;
+// 	}
+// 	return (actual);
+// }
+
 int	*ft_refa(int *a, int full_len)
 {
 	int	i;
-	int	temp[2];
+	int	j;
+	int	*tempi;
+	int	temp[1000];
 	int	*actual;
 
+	tempi = (int *)malloc(sizeof(int));
 	actual = (int *)malloc(sizeof(int) * 2);
 	i = 0;
-	actual[0] = 0;
+	temp[0] = 0;
 	actual[1] = 0;
-	while(i < full_len)
+	while (i < full_len)
 	{
-		temp[0] = i;
-		temp[1] = 0;
-		while (i + 1 < full_len && a[i] < a[i + 1])
+		j = i + 1;
+		tempi[0] = a[i];
+		temp[1] = 1;
+		temp[temp[1] + 1] = i;
+		while (j < full_len)
 		{
-			temp[1]++;
-			i++;
+			if (tempi[0] < a[j])
+			{
+				temp[++temp[1]] = j;
+				tempi[0] = a[j];
+			}
+			j++;
+		}
+		j = 0;
+		while (j < i)
+		{
+			if (temp[temp[1] + 1] < a[j])
+				temp[temp[1]++] = a[j];
+			j++;
 		}
 		if (actual[1] < temp[1])
 		{
-			actual[0] = temp[0];
-			actual[1] = temp[1] + 1;
+			tempi = actual;
+			actual = ft_intdup(temp, temp[1] + 1);
+			free(tempi);
+			ft_putstr_fd("\nactual", 1);
+			ft_putnbrs(actual[1], actual);
 		}
 		i++;
 	}
