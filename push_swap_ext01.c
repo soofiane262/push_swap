@@ -50,7 +50,7 @@ int	*ft_ref(int ac, int *a)
 		j = i;
 		while (++j < ac - 1)
 			if (ref[i] > ref[j])
-				ft_swap(ref + i, ref + j, ref[i]);
+				ft_swap(ref + i, ref + j);
 		i++;
 	}
 	return (ref);
@@ -98,12 +98,12 @@ int	*ft_refa(int *a, int full_len)
 	i = 0;
 	temp[0] = 0;
 	actual[1] = 0;
-	while (i < full_len)
+	while (i + 1 < full_len)
 	{
 		j = i + 1;
 		tempi[0] = a[i];
+		temp[0] = i;
 		temp[1] = 1;
-		temp[temp[1] + 1] = i;
 		while (j < full_len)
 		{
 			if (tempi[0] < a[j])
@@ -113,20 +113,29 @@ int	*ft_refa(int *a, int full_len)
 			}
 			j++;
 		}
+		// ft_putstr_fd("\ni	", 1);
+		// ft_putnbr_fd(i, 1);
+		// ft_putstr_fd("\n\ntempi[0]", 1);
+		// ft_putnbrs(1, tempi);
 		j = 0;
 		while (j < i)
 		{
-			if (temp[temp[1] + 1] < a[j])
-				temp[temp[1]++] = a[j];
+			if (tempi[0] < a[j])
+			{
+				temp[++temp[1]] = j;
+				tempi[0] = a[j];
+			}
 			j++;
 		}
 		if (actual[1] < temp[1])
 		{
+			// ft_putstr_fd("\ntemp", 1);
+			// ft_putnbrs(temp[1] + 1, temp);
 			tempi = actual;
 			actual = ft_intdup(temp, temp[1] + 1);
 			free(tempi);
-			ft_putstr_fd("\nactual", 1);
-			ft_putnbrs(actual[1], actual);
+			// ft_putstr_fd("\nactual", 1);
+			// ft_putnbrs(actual[1] + 1, actual);
 		}
 		i++;
 	}

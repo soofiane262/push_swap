@@ -17,23 +17,44 @@ int	*ft_make_b(int full_len, int **a)
 {
 	int	i[2];
 	int	alen;
+	int	refa_len;
 	int	*b;
-	int	*ref;
 	int	*refa;
 
-	ref = ft_ref(full_len--, *a);
 	refa = ft_refa(*a, full_len);
 	alen = full_len;
-	b = (int *)malloc(sizeof(int));
-	i[0] = refa[0];
-	refa[0] = refa[1];
-	refa[1] = i[0];
+	refa_len = refa[1];
+	refa[1] = refa[0];
+	b = refa;
+	refa = ft_intdup(b + 1, refa_len);
+	free(b);
 	i[0] = 0;
-	i[1] = 1;
-	while (alen != refa[0])
+	while (i[0] < refa_len)
 	{
+		i[1] = i[0] + 1;
+		while (i[1] < refa_len)
+		{
+			if (refa[i[1]] < refa[i[0]])
+				ft_swap(&refa[i[1]], &refa[i[0]]);
+			i[1]++;
+		}
+		i[0]++;
+	}
+	b = (int *)malloc(sizeof(int));
 
 
+
+// ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
+// ft_putstr_fd("refa", 1);
+// ft_putnbrs(refa_len, refa);
+// ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
+
+
+
+	i[0] = 0;
+	i[1] = 0;
+	while (alen != refa_len)
+	{
 
 
 // ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
@@ -42,7 +63,7 @@ int	*ft_make_b(int full_len, int **a)
 // ft_putstr_fd("b", 1);
 // ft_putnbrs(full_len - alen, b);
 // ft_putstr_fd("refa", 1);
-// ft_putnbrs(refa[0] + 1, refa);
+// ft_putnbrs(refa_len, refa);
 // ft_putstr_fd("i[0]	", 1);
 // ft_putnbr_fd(i[0], 1);
 // ft_putstr_fd("\ni[1]	", 1);
@@ -68,6 +89,7 @@ int	*ft_make_b(int full_len, int **a)
 		}
 			i[0]++;
 	}
+	free(refa);
 	return (b);
 }
 
@@ -140,35 +162,34 @@ int	main(int ac, char **av)
 	refs[1] = ft_refa(a, ac - 1);
 
 
-ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-ft_putstr_fd("a", 1);
-ft_putnbrs(ac - 1, a);
-ft_putstr_fd("ref", 1);
-ft_putnbrs(ac - 1, refs[0]);
-ft_putstr_fd("refa", 1);
-ft_putnbrs(refs[1][1] + 1, refs[1]);
-ft_putstr_fd("---------------------------------------------------------\n\n", 1);
+// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
+// ft_putstr_fd("a", 1);
+// ft_putnbrs(ac - 1, a);
+// ft_putstr_fd("ref", 1);
+// ft_putnbrs(ac - 1, refs[0]);
+// ft_putstr_fd("refa", 1);
+// ft_putnbrs(refs[1][1] + 1, refs[1]);
+// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
 
 
-	b = ft_make_b(ac, &a);
+	b = ft_make_b(ac - 1, &a);
 
 
-ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
-ft_putstr_fd("a", 1);
-ft_putnbrs(refs[1][1], a);
-ft_putstr_fd("b", 1);
-ft_putnbrs(ac - refs[1][1] - 1, b);
-ft_putstr_fd("---------------------------------------------------------\n\n", 1);
+// ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
+// ft_putstr_fd("a", 1);
+// ft_putnbrs(refs[1][1], a);
+// ft_putstr_fd("b", 1);
+// ft_putnbrs(ac - refs[1][1] - 1, b);
+// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
 
 
 	ft_sort(ac - 1, &a, &b, refs);
 
 
-ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
-ft_putstr_fd("sorted", 1);
-ft_putnbrs(ac - 1, a);
-ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-
+// ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
+// ft_putstr_fd("sorted", 1);
+// ft_putnbrs(ac - 1, a);
+// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
 
 
 	return (0);

@@ -17,7 +17,7 @@ void	ft_sort(int full_len, int **a, int **b, int **ref);
 int		*ft_make_b(int ac, int **a);
 int		ft_check_dup(int *a, int i);
 int		*ft_args_check(int ac, char **av);
-void	ft_swap(int *ref_i, int *ref_j, int temp);
+void	ft_swap(int *ref_i, int *ref_j);
 int		*ft_ref(int ac, int *a);
 int		*ft_refa(int *a, int full_len);
 int		*ft_intdup(int *x, int len);

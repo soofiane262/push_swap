@@ -41,8 +41,10 @@ void	ft_exit(int *x, int *y, int *z, int *t)
 	}	
 }
 
-void	ft_swap(int *ref_i, int *ref_j, int temp)
+void	ft_swap(int *ref_i, int *ref_j)
 {
+	int	temp;
+
 	temp = *ref_i;
 	*ref_i = *ref_j;
 	*ref_j = temp;
