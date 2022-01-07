@@ -31,13 +31,19 @@ int	*ft_sort_ext00(int *i, int full_len, int **refs, int *mvts)
 	return (min);
 }
 
-void	ft_sort_ext01(int **b, int full_len, int **refs, int **min)
+char	**ft_sort_ext01(int full_len, int **refs, int **min)
 {
+	int		i[2];
+	char	*temp[1000];
+	char	**rotates_b;
+
+	i[0] = 0;
 	if ((*min)[1] <= (full_len - refs[1][1]) / 2)
 	{
 		while ((*min)[1] > 0)
 		{
-			ft_r(*b, full_len - refs[1][1], "b");
+			temp[i[0]] = "rb";
+			i[0]++;
 			(*min)[0]--;
 			(*min)[1]--;
 		}
@@ -46,12 +52,24 @@ void	ft_sort_ext01(int **b, int full_len, int **refs, int **min)
 	{
 		while ((*min)[1] < full_len - refs[1][1])
 		{
-			ft_rr(*b, full_len - refs[1][1], "b");
+			temp[i[0]] = "rrb";
+			i[0]++;
 			(*min)[0]--;
 			(*min)[1]++;
 		}
 	}
 	(*min)[0]--;
+	rotates_b = (char **)malloc(sizeof(char *) * i[0] + 1);
+	i[1] = 0;
+	while (i[1] < i[0])
+	{
+		rotates_b[i[1]] = ft_strdup(temp[i[1]]);
+		i[1]++;
+	}
+	rotates_b[i[1]] = NULL;
+	return (rotates_b);
+
+			// ft_rr(*b, full_len - refs[1][1], "b");
 }
 
 void	ft_sort_ext02(int *i, int *start, int **a, int **refs)
@@ -73,13 +91,19 @@ void	ft_sort_ext03(int *i, int *start, int **a, int **b)
 	}
 }
 
-void	ft_sort_ext04(int j, int **min, int **a, int **refs)
+char	**ft_sort_ext04(int j, int **min)
 {
+	int		i[2];
+	char	*temp[1000];
+	char	**rotates_a;
+
+	i[0] = 0;
 	if (j == *min[0])
 	{
 		while (*min[0] > 0)
 		{
-			ft_r(*a, refs[1][1], "a");
+			temp[i[0]] = "ra";
+			i[0]++;
 			(*min)[0]--;
 		}
 	}
@@ -87,8 +111,19 @@ void	ft_sort_ext04(int j, int **min, int **a, int **refs)
 	{
 		while (*min[0] > 0)
 		{
-			ft_rr(*a, refs[1][1], "a");
+			temp[i[0]] = "rra";
+			i[0]++;
 			(*min)[0]--;
 		}
 	}
+	rotates_a = (char **)malloc(sizeof(char *) * i[0] + 1);
+	i[1] = 0;
+	while (i[1] < i[0])
+	{
+		rotates_a[i[1]] = ft_strdup(temp[i[1]]);
+		i[1]++;
+	}
+	rotates_a[i[1]] = NULL;
+	return (rotates_a);
+			// ft_rr(*a, refs[1][1], "a");
 }

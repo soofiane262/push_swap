@@ -15,12 +15,13 @@
 # include "libft/libft.h"
 
 void	ft_final_rotate(int **a, int **refs);
+void	ft_rotates(int **a, int **b, char **rotates_a, char **rotates_b, int alen, int blen);
 void	ft_sort(int full_len, int **a, int **b, int **ref);
 int		*ft_sort_ext00(int *i, int full_len, int **refs, int *mvts);
-void	ft_sort_ext01(int **b, int full_len, int **refs, int **min);
+char	**ft_sort_ext01(int full_len, int **refs, int **min);
 void	ft_sort_ext02(int *i, int *start, int **a, int **refs);
 void	ft_sort_ext03(int *i, int *start, int **a, int **b);
-void	ft_sort_ext04(int j, int **min, int **a, int **refs);
+char	**ft_sort_ext04(int j, int **min);
 int		*ft_count_mvts(int full_len, int *a, int *b, int **refs);
 void	ft_count_mvts_ext00(int *i, int **refs, int *a, int *start);
 void	ft_count_mvts_ext01(int *i, int *a, int b_j, int start);
@@ -39,7 +40,14 @@ int		*ft_intdup(int *x, int len);
 void	ft_exit(int *x, int *y, int *z, int *t);
 void	ft_p(int **x, int **y, int xlen, int ylen);
 void	ft_s(int *x, char *c);
+void	ft_r_all(int *a, int *b, int alen, int blen);
+void	ft_rr_all(int *a, int *b, int alen, int blen);
 void	ft_r(int *x, int xlen, char *c);
 void	ft_rr(int *x, int xlen, char *c);
-void	ft_free(int *x, int *y);
+void	ft_free(int *x, int *y, char **z, char **t);
+
+
+
+void	ft_putnbrs(int len, int *x);
+
 #endif
