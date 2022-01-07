@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_ext01.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-mars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,134 +10,75 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
 
-int	*ft_intdup(int *x, int len)
+void	ft_count_mvts_ext00(int *i, int **refs, int *a, int *start)
 {
-	int	i;
-	int	*cpy;
-
-	i = 0;
-	cpy = (int *)malloc(len * sizeof(int));
-	if (!cpy)
-		return (0);
-	while (i < len)
-	{
-		cpy[i] = x[i];
-		i++;
-	}
-	return (cpy);
+	while (*i + 1 < refs[1][1] && a[*i] < a[*i + 1])
+		(*i)++;
+	if (*i + 1 != refs[1][1] && a[*i] > a[*i + 1])
+		*start = *i + 1;
+	*i = *start;
 }
 
-int	*ft_ref(int ac, int *a)
+void	ft_count_mvts_ext01(int *i, int *a, int b_j, int start)
 {
-	int	i;
-	int	j;
-	int	*ref;
-
-	ref = (int *)malloc(sizeof(int) * (ac - 1));
-	ft_exit(ref, a, NULL, NULL);
-	i = 0;
-	while (i < ac - 1)
+	if (start && a[0] < b_j)
 	{
-		ref[i] = a[i];
-		i++;
+		(*i) = 0;
+		while (*i < start && a[*i] < b_j)
+			(*i)++;
 	}
-	i = 0;
-	while (i < ac - 2)
-	{
-		j = i;
-		while (++j < ac - 1)
-			if (ref[i] > ref[j])
-				ft_swap(ref + i, ref + j);
-		i++;
-	}
-	return (ref);
 }
 
-// int	*ft_refa(int *a, int full_len)
-// {
-// 	int	i;
-// 	int	temp[2];
-// 	int	*actual;
-
-// 	actual = (int *)malloc(sizeof(int) * 2);
-// 	i = 0;
-// 	actual[0] = 0;
-// 	actual[1] = 0;
-// 	while(i < full_len)
-// 	{
-// 		temp[0] = i;
-// 		temp[1] = 0;
-// 		while (i + 1 < full_len && a[i] < a[i + 1])
-// 		{
-// 			temp[1]++;
-// 			i++;
-// 		}
-// 		if (actual[1] < temp[1])
-// 		{
-// 			actual[0] = temp[0];
-// 			actual[1] = temp[1] + 1;
-// 		}
-// 		i++;
-// 	}
-// 	return (actual);
-// }
-
-int	*ft_refa(int *a, int full_len)
+void	ft_count_mvts_ext02(int *i, int **refs, int *temp)
 {
-	int	i;
+	if (*i != refs[1][1] && *i <= refs[1][1] / 2)
+		while ((*i)--)
+			(*temp)++;
+	else if (*i != refs[1][1] && *i > refs[1][1] / 2)
+		while ((*i)++ < refs[1][1])
+			(*temp)++;
+}
+
+void	ft_count_mvts_ext03(int *i, int **refs, int full_len, int *temp)
+{
+	if (*i != full_len - refs[1][1]
+			&& *i <= (full_len - refs[1][1]) / 2)
+		while ((*i)--)
+			(*temp)++;
+	else if (*i != full_len - refs[1][1]
+				&& *i > (full_len - refs[1][1]) / 2)
+		while ((*i)++ < full_len - refs[1][1])
+			(*temp)++;
+	(*temp)++;
+}
+
+int	*ft_count_mvts(int full_len, int *a, int *b, int **refs)
+{
+	int	i[2];
 	int	j;
-	int	*tempi;
 	int	temp[1000];
-	int	*actual;
+	int	*mvts;
+	int	start;
 
-	tempi = (int *)malloc(sizeof(int));
-	actual = (int *)malloc(sizeof(int) * 2);
-	i = 0;
-	temp[0] = 0;
-	actual[1] = 0;
-	while (i + 1 < full_len)
+	j = 0;
+	while (j < 1000)
+		temp[j++] = 0;
+	j = 0;
+	while (j != full_len - refs[1][1])
 	{
-		j = i + 1;
-		tempi[0] = a[i];
-		temp[0] = i;
-		temp[1] = 1;
-		while (j < full_len)
-		{
-			if (tempi[0] < a[j])
-			{
-				temp[++temp[1]] = j;
-				tempi[0] = a[j];
-			}
-			j++;
-		}
-		// ft_putstr_fd("\ni	", 1);
-		// ft_putnbr_fd(i, 1);
-		// ft_putstr_fd("\n\ntempi[0]", 1);
-		// ft_putnbrs(1, tempi);
-		j = 0;
-		while (j < i)
-		{
-			if (tempi[0] < a[j])
-			{
-				temp[++temp[1]] = j;
-				tempi[0] = a[j];
-			}
-			j++;
-		}
-		if (actual[1] < temp[1])
-		{
-			// ft_putstr_fd("\ntemp", 1);
-			// ft_putnbrs(temp[1] + 1, temp);
-			tempi = actual;
-			actual = ft_intdup(temp, temp[1] + 1);
-			free(tempi);
-			// ft_putstr_fd("\nactual", 1);
-			// ft_putnbrs(actual[1] + 1, actual);
-		}
-		i++;
+		i[0] = 0;
+		i[1] = j;
+		start = 0;
+		ft_count_mvts_ext00(&i[0], refs, a, &start);
+		while (i[0] < refs[1][1] && a[i[0]] < b[j])
+			i[0]++;
+		ft_count_mvts_ext01(&i[0], a, b[j], start);
+		ft_count_mvts_ext02(&i[0], refs, &temp[j]);
+		ft_count_mvts_ext03(&i[1], refs, full_len, &temp[j]);
+		j++;
 	}
-	return (actual);
+	mvts = ft_intdup(temp, j);
+	return (mvts);
 }

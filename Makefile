@@ -20,7 +20,8 @@ RM		=	rm -f
 
 CFLAGS	=	-Wall -Wextra -Werror
 
-SRCS	=	push_swap_ext01.c push_swap_ext02.c push_swap_ext03.c
+SRCS	=	push_swap_ext00.c push_swap_ext01.c push_swap_ext02.c\
+			push_swap_ext03.c push_swap_ext04.c push_swap_ext05.c
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -39,16 +40,16 @@ $(NAME): $(OBJS) $(PGM) $(HDFL)
 	@$(CC) $(CFLAGS) $(PGM) -L./libft/ -lft -L. -lpush_swap -o $(NAME)
 
 norm:
-	@norminette
+	@norminette $(PGM) $(SRCS) $(HDFL)
 
 clean:
 	@(cd libft/; make clean;)
 	@$(RM) $(OBJS)
 
-fclean: clean
+fclean:
 	@(cd libft/; make fclean;)
-	@$(RM) $(NAME)
+	@$(RM) $(OBJS) $(NAME)
 
 re: fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all norm clean fclean re

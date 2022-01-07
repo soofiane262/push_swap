@@ -7,8 +7,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
+make: *** No rule to make target `push_swap_ext05.o', needed by `push_swap'.  Stop.
+ 
 
-# Make data base, printed on Thu Jan  6 17:51:00 2022
+# Make data base, printed on Fri Jan  7 20:06:23 2022
 
 # Variables
 
@@ -27,9 +29,9 @@ VSCODE_LOG_NATIVE = false
 # makefile
 CURDIR := /Users/sel-mars/Desktop/42Cursus/06_push_swap/06_push_swap_WIP
 # makefile
- 
 SHELL = /bin/sh
 # makefile (from `Makefile', line 19)
+ 
 RM = rm -f
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
@@ -41,14 +43,14 @@ CFLAGS = -Wall -Wextra -Werror
 MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
-# makefile (from `Makefile', line 25)
+# makefile (from `Makefile', line 26)
 OBJS = $(SRCS:.c=.o)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cd6000339h/T/vscode-ipc-2723d911-f807-4915-8fbc-a8eb06e3a2fe.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cd6000339h/T/vscode-ipc-56d56608-b0ee-4153-8643-e3d967a2b260.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.PdBhxnWgxH/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.ZHYowsAUib/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -59,21 +61,21 @@ AR = ar rc
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
-# makefile (from `Makefile', line 31)
+# makefile (from `Makefile', line 32)
 LIB = libpush_swap.a
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
-# makefile (from `Makefile', line 27)
+# makefile (from `Makefile', line 28)
 PGM = push_swap.c
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.MdP715bEAZ/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.wUXuJNBBxb/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
 PWD = /Users/sel-mars/Desktop/42Cursus/06_push_swap/06_push_swap_WIP
-# makefile (from `Makefile', line 29)
+# makefile (from `Makefile', line 30)
 HDFL = push_swap.h
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
@@ -102,7 +104,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from `Makefile', line 23)
-SRCS = push_swap_ext01.c push_swap_ext02.c push_swap_ext03.c
+SRCS = push_swap_ext00.c push_swap_ext01.c push_swap_ext02.c push_swap_ext03.c push_swap_ext04.c push_swap_ext05.c
 # environment
 SHLVL = 1
 # makefile (from `Makefile', line 15)
@@ -136,7 +138,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000004.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000002.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -166,9 +168,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1751
+VSCODE_PID = 19111
 # variable set hash-table stats:
-# Load=77/1024=8%, Rehash=0, Collisions=7/121=6%
+# Load=77/1024=8%, Rehash=0, Collisions=5/107=5%
 
 # Pattern-specific Variable Values
 
@@ -176,9 +178,9 @@ VSCODE_PID = 1751
 
 # Directories
 
-# . (device 16777227, inode 3703134): 21 files, no impossibilities.
+# . (device 16777227, inode 3754350): 26 files, no impossibilities.
 
-# 21 files, no impossibilities in 1 directories.
+# 26 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -189,7 +191,7 @@ VSCODE_PID = 1751
 # Not a target:
 push_swap_ext01.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-06 16:55:17
+#  Last modified 2022-01-07 19:25:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -197,45 +199,38 @@ push_swap_ext01.o:
 
 # Not a target:
 push_swap.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-01-06 16:56:42
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 all: push_swap
 #  Phony target (prerequisite of .PHONY).
 #  Command-line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
+#  File has not been updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/14=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 push_swap_ext02.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-06 16:55:17
+#  Last modified 2022-01-07 19:25:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-.PHONY: all clean fclean re
+.PHONY: all norm clean fclean re
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 push_swap.h:
-#  Implicit rule search has been done.
-#  Last modified 2022-01-06 16:42:03
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .SUFFIXES:
@@ -246,7 +241,7 @@ push_swap.h:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-02 20:42:26
+#  Last modified 2022-01-07 20:06:22
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -255,28 +250,37 @@ Makefile:
 # Not a target:
 push_swap_ext03.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-06 16:55:17
+#  Last modified 2022-01-07 19:25:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-fclean: clean
+# Not a target:
+push_swap_ext05.o:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+fclean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 49):
+#  commands to execute (from `Makefile', line 50):
 	@(cd libft/; make fclean;)
-	@$(RM) $(NAME)
+	@$(RM) $(OBJS) $(NAME)
 	
 
 norm:
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
-#  Modification time never checked.
+#  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 42):
-	@norminette
+#  commands to execute (from `Makefile', line 43):
+	@norminette $(PGM) $(SRCS) $(HDFL)
 	
 
 # Not a target:
@@ -291,49 +295,49 @@ re: fclean all
 #  File does not exist.
 #  File has not been updated.
 
+# Not a target:
+push_swap_ext04.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-01-07 19:25:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 45):
+#  commands to execute (from `Makefile', line 46):
 	@(cd libft/; make clean;)
 	@$(RM) $(OBJS)
 	
 
-push_swap: push_swap_ext01.o push_swap_ext02.o push_swap_ext03.o push_swap.c push_swap.h
+push_swap: push_swap_ext00.o push_swap_ext01.o push_swap_ext02.o push_swap_ext03.o push_swap_ext04.o push_swap_ext05.o push_swap.c push_swap.h
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: `'
-#  Last modified 2022-01-06 16:55:17
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := push_swap
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := push_swap_ext01.o push_swap_ext02.o push_swap_ext03.o push_swap.c push_swap.h
-# automatic
-# | := 
-# automatic
-# < := push_swap_ext01.o
-# automatic
-# ^ := push_swap_ext01.o push_swap_ext02.o push_swap_ext03.o push_swap.c push_swap.h
-# automatic
-# ? := push_swap.c
+#  Last modified 2022-01-07 19:25:17
+#  File has not been updated.
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/22=9%
-#  commands to execute (from `Makefile', line 36):
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 37):
 	@(cd libft/; make;)
 	@$(CC) $(CFLAGS) -c $(SRCS) -I $(HDFL)
 	@$(AR) $(LIB) $(OBJS)
 	@$(CC) $(CFLAGS) $(PGM) -L./libft/ -lft -L. -lpush_swap -o $(NAME)
 	
 
+# Not a target:
+push_swap_ext00.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-01-07 19:25:16
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
 # files hash-table stats:
-# Load=15/1024=1%, Rehash=0, Collisions=0/42=0%
+# Load=18/1024=2%, Rehash=0, Collisions=0/47=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -342,10 +346,10 @@ push_swap: push_swap_ext01.o push_swap_ext02.o push_swap_ext03.o push_swap.c pus
 
 # # of strings in strcache: 1
 # # of strcache buffers: 1
+ 
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
- 
-# Finished Make data base on Thu Jan  6 17:51:00 2022
+# Finished Make data base on Fri Jan  7 20:06:23 2022
 
  

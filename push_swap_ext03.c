@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_ext03.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-mars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,70 +10,54 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
 
-void	ft_p(int **x, int **y, int xlen, int ylen)
+void	ft_exit(int *x, int *y, int *z, int *t)
 {
-	int	i;
-	int	temp;
-	int	*ptrx;
-	int	*ptry;
-
-	temp = (*x)[0];
-	i = ylen;
-	ptry = ft_intdup(*y, ylen + 1);
-	free(*y);
-	*y = ptry;
-	while (i > 0)
+	if (!x)
 	{
-		(*y)[i] = (*y)[i - 1];
+		if (y)
+			free(y);
+		if (z)
+			free(z);
+		if (t)
+			free(t);
+		exit(1);
+	}	
+}
+
+int	ft_check_dup(int *a, int i)
+{
+	int	j;
+
+	j = i--;
+	while (i >= 0)
+	{
+		if (a[j] == a[i])
+			return (-1);
 		i--;
 	}
-	(*y)[0] = temp;
-	ptrx = ft_intdup((*x + 1), xlen - 1);
-	free(*x);
-	*x = ptrx;
+	return (0);
 }
 
-void	ft_s(int *x, char *c)
+int	*ft_args_check(int ac, char **av)
 {
-	int	temp;
+	int			i;
+	int			*a;
+	long long	ret;
 
-	temp = *x;
-	*x = *(x + 1);
-	*(x + 1) = temp;
-	ft_putendl_fd(ft_strjoin("s", c), 1);
-}
-
-void	ft_r(int *x, int xlen, char *c)
-{
-	int	i;
-	int	temp;
-
-	temp = x[0];
+	a = (int *)malloc(sizeof(int) * (ac - 1));
+	ft_exit(a, NULL, NULL, NULL);
 	i = 0;
-	while (i < xlen - 1)
+	while (++i < ac)
 	{
-		*(x + i) = *(x + i + 1);
-		i++;
+		ret = ft_atoi(av[i]);
+		a[i - 1] = ret;
+		if (ft_check_dup(a, i - 1))
+		{
+			ft_putstr_fd("Error\n", 2);
+			ft_exit(a, NULL, NULL, NULL);
+		}
 	}
-	*(x + i) = temp;
-	ft_putendl_fd(ft_strjoin("r", c), 1);
-}
-
-void	ft_rr(int *x, int xlen, char *c)
-{
-	int	i;
-	int	temp;
-
-	temp = x[xlen - 1];
-	i = xlen - 1;
-	while (i > 0)
-	{
-		*(x + i) = *(x + i - 1);
-		i--;
-	}
-	*(x) = temp;
-	ft_putendl_fd(ft_strjoin("rr", c), 1);
+	return (a);
 }
