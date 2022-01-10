@@ -38,6 +38,9 @@ all:	$(NAME)
 $(NAME): $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
 
+norm:
+	@norminette $(SRCS) $(BNSSRCS) libft.h
+
 bonus: $(OBJS) $(BNSOBJS)
 	@$(AR) $(NAME) $(OBJS) $(BNSOBJS)
 

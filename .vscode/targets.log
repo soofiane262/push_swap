@@ -8,11 +8,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Mon Jan 10 23:12:22 2022
+# Make data base, printed on Tue Jan 11 00:43:06 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -174,9 +173,9 @@ VSCODE_PID = 3365
 
 # Directories
 
-# . (device 16777227, inode 3754350): 30 files, no impossibilities.
+# . (device 16777227, inode 3754350): 29 files, no impossibilities.
 
-# 30 files, no impossibilities in 1 directories.
+# 29 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -187,7 +186,7 @@ VSCODE_PID = 3365
 # Not a target:
 push_swap_ext01.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 16:13:53
+#  Last modified 2022-01-11 00:40:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -196,7 +195,7 @@ push_swap_ext01.o:
 # Not a target:
 push_swap.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 16:07:43
+#  Last modified 2022-01-11 00:27:05
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -215,7 +214,7 @@ all: push_swap
 # Not a target:
 push_swap_ext02.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 16:13:53
+#  Last modified 2022-01-11 00:40:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -229,7 +228,7 @@ push_swap_ext02.o:
 # Not a target:
 push_swap.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 15:59:33
+#  Last modified 2022-01-11 00:25:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -244,7 +243,7 @@ push_swap.h:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-08 17:02:57
+#  Last modified 2022-01-11 00:42:18
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -253,7 +252,7 @@ Makefile:
 # Not a target:
 push_swap_ext03.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 16:13:53
+#  Last modified 2022-01-11 00:40:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -262,7 +261,7 @@ push_swap_ext03.o:
 # Not a target:
 push_swap_ext05.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 16:13:53
+#  Last modified 2022-01-11 00:40:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -273,7 +272,7 @@ fclean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 51):
+#  commands to execute (from `Makefile', line 52):
 	@(cd libft/; make fclean;)
 	@$(RM) $(OBJS) $(NAME)
 	
@@ -284,6 +283,7 @@ norm:
 #  File does not exist.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 44):
+	@(cd libft/; make norm;)
 	@norminette $(PGM) $(SRCS) $(HDFL)
 	
 
@@ -302,7 +302,7 @@ re: fclean all
 # Not a target:
 push_swap_ext04.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 16:13:53
+#  Last modified 2022-01-11 00:40:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -313,19 +313,19 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 47):
+#  commands to execute (from `Makefile', line 48):
 	@(cd libft/; make clean;)
 	@$(RM) $(OBJS)
 	
 
 push_swap: push_swap_ext00.o push_swap_ext01.o push_swap_ext02.o push_swap_ext03.o push_swap_ext04.o push_swap_ext05.o push_swap_ext06.o push_swap.c push_swap.h
 #  Implicit rule search has not been done.
-#  Last modified 2022-01-10 16:13:53
+#  Last modified 2022-01-11 00:40:26
 #  File has been updated.
 #  Successfully updated.
+ 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
- 
 #  commands to execute (from `Makefile', line 38):
 	@(cd libft/; make;)
 	@$(CC) $(CFLAGS) -c $(SRCS) -I $(HDFL)
@@ -336,7 +336,7 @@ push_swap: push_swap_ext00.o push_swap_ext01.o push_swap_ext02.o push_swap_ext03
 # Not a target:
 push_swap_ext06.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 16:13:53
+#  Last modified 2022-01-11 00:40:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -345,7 +345,7 @@ push_swap_ext06.o:
 # Not a target:
 push_swap_ext00.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 16:13:53
+#  Last modified 2022-01-11 00:40:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -364,6 +364,6 @@ push_swap_ext00.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jan 10 23:12:22 2022
+# Finished Make data base on Tue Jan 11 00:43:06 2022
 
  

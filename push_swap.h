@@ -37,9 +37,8 @@ int		*ft_args_check(int ac, char **av);
 void	ft_swap(int *ref_i, int *ref_j);
 int		*ft_ref(int ac, int *a, int **refs);
 int		*ft_refa(int *a, int full_len);
-int	*ft_refa_ext(int i, int *a, int full_len, int *tempi);
-// int		*ft_refa_ext00(int i, int *a, int full_len, int t);
-// void	ft_refa_ext01(int *x, int y, int *z, int t);
+int		*ft_refa_ext00(int i, int *a, int full_len, int t);
+void	ft_refa_ext01(int *x, int y, int *z, int t);
 int		*ft_sorted_refa(int *refa_len, int **refs);
 int		*ft_intdup(int *x, int len);
 void	ft_exit(int *x, int *y, int *z, int **t);
@@ -51,5 +50,6 @@ void	ft_rr(int *x, int xlen, char *c);
 void	ft_free(int *x, int *y, char **z, char **t);
 void	ft_free_arr(char **arr);
 void	ft_init(int *i, int *j, int *k);
+int		ft_check_digit(char *str);
 void	ft_putnbrs(int len, int *x);
 #endif

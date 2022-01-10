@@ -41,12 +41,29 @@ int	ft_check_dup(int *a, int i)
 	return (0);
 }
 
+int	ft_check_digit(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '-')
+			i++;
+		if (!ft_isdigit(str[i++]))
+			return (0);
+	}
+	return (1);
+}
+
 int	*ft_args_check(int ac, char **av)
 {
 	int			i;
 	int			*a;
 	long long	ret;
 
+	if (ac == 1)
+		exit (0);
 	a = (int *)malloc(sizeof(int) * (ac - 1));
 	ft_exit(a, NULL, NULL, NULL);
 	i = 0;
@@ -54,7 +71,8 @@ int	*ft_args_check(int ac, char **av)
 	{
 		ret = ft_atoi(av[i]);
 		a[i - 1] = ret;
-		if (ft_check_dup(a, i - 1))
+		if (ft_check_dup(a, i - 1) || !ft_check_digit(av[i])
+			|| ret > 2147483647 || ret < -2147483648)
 			ft_exit(NULL, a, NULL, NULL);
 	}
 	return (a);

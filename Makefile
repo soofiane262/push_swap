@@ -41,6 +41,7 @@ $(NAME): $(OBJS) $(PGM) $(HDFL)
 	@$(CC) $(CFLAGS) $(PGM) -L./libft/ -lft -L. -lpush_swap -o $(NAME)
 
 norm:
+	@(cd libft/; make norm;)
 	@norminette $(PGM) $(SRCS) $(HDFL)
 
 clean:

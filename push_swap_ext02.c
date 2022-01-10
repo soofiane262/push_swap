@@ -64,84 +64,7 @@ int	*ft_ref(int ac, int *a, int **refs)
 	return (ref);
 }
 
-// int	*ft_refa_ext00(int i, int *a, int full_len, int t)
-// {
-// 	int	j;
-// 	int	count;
-// 	int	*ret;
-
-// 	count = ft_count_for_refa_ext(i, a, full_len, t);
-// 	ret = (int *)malloc(sizeof(int) * count);
-// 	j = i;
-// 	ret[0] = i;
-// 	ret[1] = 1;
-// 	while (++j < full_len)
-// 		if (t < a[j])
-// 			ft_refa_ext01(&ret[++ret[1]], j, &t, a[j]);
-// 	j = -1;
-// 	while (++j < i)
-// 		if (t < a[j])
-// 			ft_refa_ext01(&ret[++ret[1]], j, &t, a[j]);
-// 	return (ret);
-// }
-
-// void	ft_refa_ext01(int *x, int y, int *z, int t)
-// {
-// 		*x = y;
-// 		*z = t;
-// }
-
-// int	ft_count_for_refa_ext(int i, int *a, int full_len, int t)
-// {
-// 	int	j;
-// 	int	temp[1000];
-
-// 	j = i;
-// 	temp[0] = i;
-// 	temp[1] = 1;
-// 	while (++j < full_len)
-// 		if (t < a[j])
-// 			ft_refa_ext01(&temp[++temp[1]], j, &t, a[j]);
-// 	j = -1;
-// 	while (++j < i)
-// 		if (t < a[j])
-// 			ft_refa_ext01(&temp[++temp[1]], j, &t, a[j]);
-// 	return (temp[1]);
-// }
-
-// int	*ft_refa(int *a, int full_len, int **refs)
-// {
-// 	int	i;
-// 	int	t;
-// 	int	*tempi;
-// 	int	*temp;
-// 	int	*actual;
-
-// 	actual = (int *)malloc(sizeof(int) * 2);
-// 	ft_exit(actual, a, NULL, refs);
-// 	ft_init(&actual[0], &actual[1], 0);
-// 	i = -1;
-// 	while (++i < full_len)
-// 	{
-// 		t = a[i];
-// 		temp = ft_refa_ext00(i, a, full_len, t);
-// 		// ft_exit(temp, tempi, actual, refs);
-// 		if (actual[1] < temp[1])
-// 		{
-// 			tempi = actual;
-// 			actual = ft_intdup(temp, temp[1] + 1);
-// 			free(tempi);
-// 			ft_exit(actual, a, NULL, refs);
-// 		}
-// 		free(temp);
-// 	}
-// 	return (actual);
-// }
-
-
-
-
-int	*ft_refa_ext(int i, int *a, int full_len, int *tempi)
+int	*ft_refa_ext00(int i, int *a, int full_len, int t)
 {
 	int	j;
 	int	*temp;
@@ -151,40 +74,35 @@ int	*ft_refa_ext(int i, int *a, int full_len, int *tempi)
 	temp[0] = i;
 	temp[1] = 1;
 	while (++j < full_len)
-	{
-		if (tempi[0] < a[j])
-		{
-			temp[++temp[1]] = j;
-			tempi[0] = a[j];
-		}
-	}
+		if (t < a[j])
+			ft_refa_ext01(&temp[++temp[1]], j, &t, a[j]);
 	j = -1;
 	while (++j < i)
-	{
-		if (tempi[0] < a[j])
-		{
-			temp[++temp[1]] = j;
-			tempi[0] = a[j];
-		}
-	}
+		if (t < a[j])
+			ft_refa_ext01(&temp[++temp[1]], j, &t, a[j]);
 	return (temp);
 }
 
+void	ft_refa_ext01(int *x, int y, int *z, int t)
+{
+	*x = y;
+	*z = t;
+}
+
+
 int	*ft_refa(int *a, int full_len)
 {
-	int	i;
+	int	i[2];
 	int	*tempi;
 	int	*temp;
 	int	*actual;
 
-	tempi = (int *)malloc(sizeof(int));
 	actual = (int *)malloc(sizeof(int) * 2);
-	i = 0;
-	actual[1] = 0;
-	while (i + 1 < full_len)
+	ft_init(&i[0], &actual[0], &actual[1]);
+	while (++i[0] < full_len)
 	{
-		tempi[0] = a[i];
-		temp = ft_refa_ext(i, a, full_len, tempi);
+		i[1] = a[i[0]];
+		temp = ft_refa_ext00(i[0], a, full_len, i[1]);
 		if (actual[1] < temp[1])
 		{
 			tempi = actual;
@@ -192,7 +110,7 @@ int	*ft_refa(int *a, int full_len)
 			free(tempi);
 		}
 		free(temp);
-		i++;
+		i[0]++;
 	}
 	return (actual);
 }
