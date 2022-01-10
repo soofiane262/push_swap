@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-int	*ft_sorted_refa(int *refa_len, int full_len, int *a, int **refs)
+int	*ft_sorted_refa(int *refa_len, int **refs)
 {
 	int	i[2];
 	int	*temp;
 	int	*refa;
 
-	temp = ft_refa(a, full_len, refs);
+	temp = ft_intdup(refs[1], refs[1][1] + 1);
 	(*refa_len) = temp[1];
 	temp[1] = temp[0];
 	refa = ft_intdup(temp + 1, *refa_len);
@@ -82,7 +82,7 @@ int	*ft_make_b(int full_len, int **a, int **refs)
 	int	*refa;
 
 	len[0] = full_len;
-	refa = ft_sorted_refa(&len[1], full_len, *a, refs);
+	refa = ft_sorted_refa(&len[1], refs);
 	b = (int *)malloc(sizeof(int));
 	i[0] = 0;
 	i[1] = 0;

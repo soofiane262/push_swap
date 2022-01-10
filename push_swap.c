@@ -31,6 +31,24 @@ void	ft_rotates(int **a, int **b, char ***rotates, int *lens)
 {
 	int	i[2];
 
+
+
+
+
+
+// ft_putendl_fd("****************************", 1);
+// i[0] = 0;
+// while (rotates[0][i[0]])
+// 	ft_putendl_fd(rotates[0][i[0]++], 1);
+// i[0] = 0;
+// while (rotates[1][i[0]])
+// 	ft_putendl_fd(rotates[1][i[0]++], 1);
+// ft_putendl_fd("****************************", 1);
+
+
+
+
+
 	ft_init(&i[0], &i[1], 0);
 	while (rotates[0][i[0]] && rotates[1][i[1]]
 			&& !ft_strncmp(rotates[0][i[0]], "ra", 3)
@@ -54,8 +72,6 @@ void	ft_rotates(int **a, int **b, char ***rotates, int *lens)
 	while (rotates[1][i[1]] && !ft_strncmp(rotates[1][i[1]], "rrb", 4))
 		if (++i[1])
 			ft_rr(*b, lens[1], "b");
-	ft_free(NULL, NULL, rotates[0], rotates[1]);
-	free(rotates);
 }
 
 void	ft_sort(int full_len, int **a, int **b, int **refs)
@@ -70,6 +86,23 @@ void	ft_sort(int full_len, int **a, int **b, int **refs)
 	{
 		i[0] = 0;
 		mvts = ft_count_mvts(full_len, *a, *b, refs);
+
+
+
+
+// ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
+// ft_putstr_fd("a", 1);
+// ft_putnbrs(refs[1][1], *a);
+// ft_putstr_fd("b", 1);
+// ft_putnbrs(full_len - refs[1][1], *b);
+// ft_putstr_fd("mvts", 1);
+// ft_putnbrs(full_len - refs[1][1], mvts);
+// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
+
+
+
+
+
 		min = ft_sort_ext00(&i[0], full_len, refs, mvts);
 		rotates_b = ft_sort_ext01(full_len, refs, &min);
 		ft_init(&i[0], &i[1], &i[2]);
@@ -98,10 +131,69 @@ int	main(int ac, char **av)
 	if (!refs)
 		ft_exit(NULL, NULL, NULL, refs);
 	refs[0] = ft_ref(ac, a, refs);
-	refs[1] = ft_refa(a, ac - 1, refs);
+	refs[1] = ft_refa(a, ac - 1);
+
+
+
+
+// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
+// ft_putstr_fd("a", 1);
+// ft_putnbrs(ac - 1, a);
+// ft_putstr_fd("ref", 1);
+// ft_putnbrs(ac - 1, refs[0]);
+// ft_putstr_fd("refa", 1);
+// ft_putnbrs(refs[1][1] + 1, refs[1]);
+// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
 	b = ft_make_b(ac - 1, &a, refs);
+
+
+
+
+
+
+// ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
+// ft_putstr_fd("a", 1);
+// ft_putnbrs(refs[1][1], a);
+// ft_putstr_fd("b", 1);
+// ft_putnbrs(ac - refs[1][1] - 1, b);
+// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
+
+
+
+
+
+
+
 	ft_sort(ac - 1, &a, &b, refs);
 	ft_final_rotate(&a, refs);
+
+
+
+
+
+// ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
+// ft_putstr_fd("sorted", 1);
+// ft_putnbrs(ac - 1, a);
+// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
+
+
+
+
+
 	ft_free(a, b, NULL, NULL);
 	ft_free(refs[0], refs[1], NULL, NULL);
 	free(refs);	
