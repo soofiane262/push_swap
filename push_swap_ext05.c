@@ -40,36 +40,23 @@ char	**ft_sort_ext01(int full_len, int **refs, int **min)
 	i[0] = 0;
 	if ((*min)[1] <= (full_len - refs[1][1]) / 2)
 	{
-		while ((*min)[1] > 0)
-		{
-			temp[i[0]] = "rb";
-			i[0]++;
-			(*min)[0]--;
-			(*min)[1]--;
-		}
+		i[1] = -1;
+		while (++i[1] < (*min)[1] && (*min)[0]-- >= 0)
+			temp[i[0]++] = "rb";
 	}
 	else
 	{
-		while ((*min)[1] < full_len - refs[1][1])
-		{
-			temp[i[0]] = "rrb";
-			i[0]++;
-			(*min)[0]--;
-			(*min)[1]++;
-		}
+		i[1] = (*min)[1] - 1;
+		while (++i[1] < full_len - refs[1][1] && (*min)[0]-- >= 0)
+			temp[i[0]++] = "rrb";
 	}
 	(*min)[0]--;
 	rotates_b = (char **)malloc(sizeof(char *) * i[0] + 1);
-	i[1] = 0;
-	while (i[1] < i[0])
-	{
+	i[1] = -1;
+	while (++i[1] < i[0])
 		rotates_b[i[1]] = ft_strdup(temp[i[1]]);
-		i[1]++;
-	}
 	rotates_b[i[1]] = NULL;
 	return (rotates_b);
-
-			// ft_rr(*b, full_len - refs[1][1], "b");
 }
 
 void	ft_sort_ext02(int *i, int *start, int **a, int **refs)
@@ -81,49 +68,35 @@ void	ft_sort_ext02(int *i, int *start, int **a, int **refs)
 	*i = *start;
 }
 
-void	ft_sort_ext03(int *i, int *start, int **a, int **b)
+void	ft_sort_ext03(int *i, int *start, int **a, int b_min)
 {
-	if (*start && (*a)[0] < (*b)[0])
+	if (*start && (*a)[0] < b_min)
 	{
 		*i = 0;
-		while (*i < *start && (*a)[*i] < (*b)[0])
+		while (*i < *start && (*a)[*i] < b_min)
 			(*i)++;
 	}
 }
 
-char	**ft_sort_ext04(int j, int **min)
+char	**ft_sort_ext04(int *ii, int *j, int **min, int **refs)
 {
 	int		i[2];
 	char	*temp[1000];
 	char	**rotates_a;
 
+	while (*ii != refs[1][1] && *ii <= refs[1][1] / 2 && (*ii)--)
+			(*j)++;
 	i[0] = 0;
-	if (j == *min[0])
-	{
-		while (*min[0] > 0)
-		{
-			temp[i[0]] = "ra";
-			i[0]++;
-			(*min)[0]--;
-		}
-	}
+	if (*j == *min[0])
+		while (--(*min)[0] >= 0)
+			temp[i[0]++] = "ra";
 	else
-	{
-		while (*min[0] > 0)
-		{
-			temp[i[0]] = "rra";
-			i[0]++;
-			(*min)[0]--;
-		}
-	}
+		while (--(*min)[0] >= 0)
+			temp[i[0]++] = "rra";
 	rotates_a = (char **)malloc(sizeof(char *) * i[0] + 1);
-	i[1] = 0;
-	while (i[1] < i[0])
-	{
+	i[1] = -1;
+	while (++i[1] < i[0])
 		rotates_a[i[1]] = ft_strdup(temp[i[1]]);
-		i[1]++;
-	}
 	rotates_a[i[1]] = NULL;
 	return (rotates_a);
-			// ft_rr(*a, refs[1][1], "a");
 }

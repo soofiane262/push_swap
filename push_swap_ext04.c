@@ -12,26 +12,6 @@
 
 #include "push_swap.h"
 
-void	ft_free(int *x, int *y, char **z, char **t)
-{
-	int	i;
-
-	free(x);
-	free(y);
-	i = 0;
-	while (z[i])
-	{
-		free(z[i]);
-		z[i] = NULL;
-	}
-	i = 0;
-	while (t[i])
-	{
-		free(t[i]);
-		t[i] = NULL;
-	}
-}
-
 void	ft_p(int **x, int **y, int xlen, int ylen)
 {
 	int	i;
@@ -57,8 +37,9 @@ void	ft_p(int **x, int **y, int xlen, int ylen)
 
 void	ft_r(int *x, int xlen, char *c)
 {
-	int	i;
-	int	temp;
+	int		i;
+	int		temp;
+	char	*r;
 
 	temp = x[0];
 	i = 0;
@@ -68,13 +49,16 @@ void	ft_r(int *x, int xlen, char *c)
 		i++;
 	}
 	*(x + i) = temp;
-	ft_putendl_fd(ft_strjoin("r", c), 1);
+	r = ft_strjoin("r", c);
+	ft_putendl_fd(r, 1);
+	free(r);
 }
 
 void	ft_rr(int *x, int xlen, char *c)
 {
-	int	i;
-	int	temp;
+	int		i;
+	int		temp;
+	char	*rr;
 
 	temp = x[xlen - 1];
 	i = xlen - 1;
@@ -84,7 +68,9 @@ void	ft_rr(int *x, int xlen, char *c)
 		i--;
 	}
 	*(x) = temp;
-	ft_putendl_fd(ft_strjoin("rr", c), 1);
+	rr = ft_strjoin("rr", c);
+	ft_putendl_fd(rr, 1);
+	free(rr);
 }
 
 void	ft_r_all(int *a, int *b, int alen, int blen)

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_ext03.c                                  :+:      :+:    :+:   */
+/*   push_swap_ext06.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-mars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,50 +12,60 @@
 
 #include "push_swap.h"
 
-void	ft_exit(int *x, int *y, int *z, int **t)
+void	ft_free(int *x, int *y, char **z, char **t)
 {
-	if (!x)
-	{
-		if (y)
-			free(y);
-		if (z)
-			free(z);
-		if (t)
-			free(t);
-		ft_putstr_fd("Error\n", 2);
-		exit(0);
-	}	
+	if (x)
+		free(x);
+	if (y)
+		free(y);
+	if (z)
+		ft_free_arr(z);
+	if (t)
+		ft_free_arr(t);
 }
 
-int	ft_check_dup(int *a, int i)
+void	ft_free_arr(char **arr)
 {
-	int	j;
+	int	i;
 
-	j = i--;
-	while (i >= 0)
-	{
-		if (a[j] == a[i])
-			return (-1);
-		i--;
-	}
-	return (0);
-}
-
-int	*ft_args_check(int ac, char **av)
-{
-	int			i;
-	int			*a;
-	long long	ret;
-
-	a = (int *)malloc(sizeof(int) * (ac - 1));
-	ft_exit(a, NULL, NULL, NULL);
 	i = 0;
-	while (++i < ac)
+	while (arr[i])
 	{
-		ret = ft_atoi(av[i]);
-		a[i - 1] = ret;
-		if (ft_check_dup(a, i - 1))
-			ft_exit(NULL, a, NULL, NULL);
+		free(arr[i]);
+		arr[i] = NULL;
+		i++;
 	}
-	return (a);
+	free(arr);
+	arr = NULL;
+}
+
+void	ft_init(int *i, int *j, int *k)
+{
+	*i = 0;
+	if (j)
+		*j = 0;
+	if (k)
+		*k = 0;
+}
+
+void	ft_putnbrs(int len, int *x)
+{
+	int	i;
+
+	ft_putstr_fd("	. :", 1);
+	i = 0;
+	while (i < len)
+	{
+		ft_putstr_fd(" | ", 1);
+		ft_putnbr_fd(x[i++], 1);
+	}
+	ft_putstr_fd(" | : .\n\n", 1);
+}
+
+void	ft_join_lens(int **min, int alen, int blen)
+{
+	free(*min);
+	(*min) = (int *)malloc(sizeof(int) * 2);
+	(*min)[0] = alen;
+	(*min)[1] = blen;
 }
