@@ -13,7 +13,9 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/libft.h"
+# include "gnl/get_next_line.h"
 
+void	ft_check_sort(int *a, int **refs, int full_len);
 void	ft_final_rotate(int **a, int **refs);
 void	ft_rotates(int **a, int **b, char ***rotates, int *lens);
 void	ft_sort(int full_len, int **a, int **b, int **ref);
@@ -52,4 +54,13 @@ void	ft_free_arr(char **arr);
 void	ft_init(int *i, int *j, int *k);
 int		ft_check_digit(char *str);
 void	ft_putnbrs(int len, int *x);
+void	ft_checker(int *a, int *b, int **refs, int *lens);
+void	ft_execute_inst(int **a, int **b, char *gnl, int **len);
+void	ft_p_checker(int **x, int **y, int xlen, int ylen);
+void	ft_s_checker(int *x);
+void	ft_s_all_checker(int **x, int **y);
+void	ft_r_checker(int *x, int xlen);
+void	ft_r_all_checker(int **x, int **y, int xlen, int ylen);
+void	ft_rr_checker(int *x, int xlen);
+void	ft_rr_all_checker(int **x, int **y, int xlen, int ylen);
 #endif

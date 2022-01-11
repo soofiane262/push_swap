@@ -12,15 +12,6 @@
 
 #include "push_swap.h"
 
-void	ft_swap(int *ref_i, int *ref_j)
-{
-	int	temp;
-
-	temp = *ref_i;
-	*ref_i = *ref_j;
-	*ref_j = temp;
-}
-
 int	*ft_intdup(int *x, int len)
 {
 	int	i;
@@ -88,7 +79,6 @@ void	ft_refa_ext01(int *x, int y, int *z, int t)
 	*x = y;
 	*z = t;
 }
-
 
 int	*ft_refa(int *a, int full_len)
 {

@@ -22,11 +22,14 @@ CFLAGS	=	-Wall -Wextra -Werror
 
 SRCS	=	push_swap_ext00.c push_swap_ext01.c push_swap_ext02.c\
 			push_swap_ext03.c push_swap_ext04.c push_swap_ext05.c\
-			push_swap_ext06.c
+			push_swap_ext06.c push_swap_ext07.c checker_ext.c\
+			gnl/get_next_line.c gnl/get_next_line_utils.c
 
 OBJS	=	$(SRCS:.c=.o)
 
 PGM		=	push_swap.c
+
+CHK		=	checker.c
 
 HDFL	=	push_swap.h
 
@@ -40,9 +43,11 @@ $(NAME): $(OBJS) $(PGM) $(HDFL)
 	@$(AR) $(LIB) $(OBJS)
 	@$(CC) $(CFLAGS) $(PGM) -L./libft/ -lft -L. -lpush_swap -o $(NAME)
 
-norm:
-	@(cd libft/; make norm;)
-	@norminette $(PGM) $(SRCS) $(HDFL)
+bonus: $(OBJS) $(CHK) $(HDFL) 
+	@(cd libft/; make;)
+	@$(CC) $(CFLAGS) -c $(SRCS) -I $(HDFL)
+	@$(AR) $(LIB) $(OBJS) $(CHOBJ)
+	@$(CC) $(CFLAGS) $(CHK) -L./libft/ -lft -L. -lpush_swap -o checker
 
 clean:
 	@(cd libft/; make clean;)
@@ -50,8 +55,8 @@ clean:
 
 fclean:
 	@(cd libft/; make fclean;)
-	@$(RM) $(OBJS) $(NAME)
+	@$(RM) $(OBJS) $(NAME) checker
 
 re: fclean all
 
-.PHONY:	all norm clean fclean re
+.PHONY:	all bonus clean fclean re

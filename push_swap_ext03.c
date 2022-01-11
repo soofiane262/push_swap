@@ -12,6 +12,15 @@
 
 #include "push_swap.h"
 
+void	ft_swap(int *ref_i, int *ref_j)
+{
+	int	temp;
+
+	temp = *ref_i;
+	*ref_i = *ref_j;
+	*ref_j = temp;
+}
+
 void	ft_exit(int *x, int *y, int *z, int **t)
 {
 	if (!x)
@@ -62,7 +71,7 @@ int	*ft_args_check(int ac, char **av)
 	int			*a;
 	long long	ret;
 
-	if (ac == 1)
+	if (ac < 3)
 		exit (0);
 	a = (int *)malloc(sizeof(int) * (ac - 1));
 	ft_exit(a, NULL, NULL, NULL);
