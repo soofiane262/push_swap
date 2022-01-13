@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_ext.c                                      :+:      :+:    :+:   */
+/*   checker_ext00.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-mars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	ft_p_checker(int **x, int **y, int xlen, int ylen)
 {
@@ -22,7 +21,7 @@ void	ft_p_checker(int **x, int **y, int xlen, int ylen)
 
 	temp = (*x)[0];
 	i = ylen;
-	ptry = ft_intdup(*y, ylen + 1);
+	ptry = ft_intdup2(*y, ylen + 1);
 	free(*y);
 	*y = ptry;
 	while (i > 0)
@@ -78,5 +77,5 @@ void	ft_rr_checker(int *x, int xlen)
 		*(x + i) = *(x + i - 1);
 		i--;
 	}
-	*(x) = temp;
+	*x = temp;
 }

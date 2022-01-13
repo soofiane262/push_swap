@@ -6,7 +6,7 @@
 /*   By: sel-mars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:26:01 by sel-mars          #+#    #+#             */
-/*   Updated: 2021/12/29 15:29:19 by sel-mars         ###   ########.fr       */
+/*   Updated: 2022/01/12 16:57:51 by sel-mars         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_p(int **x, int **y, int xlen, int ylen)
 
 	temp = (*x)[0];
 	i = ylen;
-	ptry = ft_intdup(*y, ylen + 1);
+	ptry = ft_intdup2(*y, ylen + 1);
 	free(*y);
 	*y = ptry;
 	while (i > 0)

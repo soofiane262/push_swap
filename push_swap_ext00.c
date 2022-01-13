@@ -20,8 +20,7 @@ int	*ft_sorted_refa(int *refa_len, int **refs)
 
 	temp = ft_intdup(refs[1], refs[1][1] + 1);
 	(*refa_len) = temp[1];
-	temp[1] = temp[0];
-	refa = ft_intdup(temp + 1, *refa_len);
+	refa = ft_refadup(temp, *refa_len + 1);
 	free(temp);
 	i[0] = 0;
 	while (i[0] < *refa_len)
@@ -84,9 +83,8 @@ int	*ft_make_b(int full_len, int **a, int **refs)
 	len[0] = full_len;
 	refa = ft_sorted_refa(&len[1], refs);
 	b = (int *)malloc(sizeof(int));
-	i[0] = 0;
-	i[1] = 0;
-	i[2] = 0;
+	ft_exit(b, *a, refs[0], refs);
+	ft_init(&i[0], &i[1], &i[2]);
 	while (len[0] != len[1])
 	{
 		if (refa[i[1]] == i[0])
@@ -101,26 +99,14 @@ int	*ft_make_b(int full_len, int **a, int **refs)
 	return (b);
 }
 
-char	***ft_join_rotates(char **rotates_a, char **rotates_b)
+int	*ft_join_rotates(int rotates_a, int rotates_b)
 {
-	int		i[2];
-	char	***ret;
+	int	*ret;
 
-	ft_init(&i[0], &i[1], 0);
-	while (rotates_a[i[0]])
-		i[0]++;
-	while (rotates_b[i[1]])
-		i[1]++;
-	ret = (char ***)malloc(sizeof(char **) * 2);
-	ret[0] = (char **)malloc(sizeof(char *) * (i[0] + 1));
-	ret[1] = (char **)malloc(sizeof(char *) * (i[1] + 1));
-	ft_init(&i[0], &i[1], 0);
-	while (rotates_a[i[1]])
-		ret[0][i[0]++] = ft_strdup(rotates_a[i[1]++]);
-	ret[0][i[0]] = NULL;
-	ft_init(&i[0], &i[1], 0);
-	while (rotates_b[i[1]])
-		ret[1][i[0]++] = ft_strdup(rotates_b[i[1]++]);
-	ret[1][i[0]] = NULL;
+	ret = (int *)malloc(sizeof(int) * 2);
+	if (!ret)
+		return (NULL);
+	ret[0] = rotates_a;
+	ret[1] = rotates_b;
 	return (ret);
 }

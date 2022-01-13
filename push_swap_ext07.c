@@ -12,17 +12,43 @@
 
 #include "push_swap.h"
 
-void	ft_check_sort(int *a, int **refs, int full_len)
+void	ft_check_sort(int **a, int **refs, int full_len)
 {
-	int	i;
+	int	i[3];
+	int	start;
 
-	i = 0;
-	while (i < full_len && a[i] == refs[0][i])
-		i++;
-	if (i == full_len)
+	ft_init(&i[0], &i[1], &i[2]);
+	start = 0;
+	while (start < full_len && (*a)[start] != refs[0][0])
+		start++;
+	if (start)
+		i[0] = start;
+	while (i[0] < full_len && (*a)[i[0]] == refs[0][i[1]++])
+		i[0]++;
+	if (start)
+		while (i[2] < start && (*a)[i[2]] == refs[0][i[1]++])
+			i[2]++;
+	ft_check_sort_ext(a, i[2], &start, full_len);
+	if ((!start && i[0] == full_len) || (start && i[2] == start))
 	{
-		free(a);
-		ft_exit(NULL, refs[0], refs[1], refs);
+		ft_free(*a, refs[0], NULL, NULL);
+		if (refs[1])
+			free(refs[1]);
+		free(refs);
+		exit(0);
+	}
+}
+
+void	ft_check_sort_ext(int **a, int i, int *start, int full_len)
+{
+	if (i == *start)
+	{
+		if (*start <= full_len / 2)
+			while ((*start)--)
+				ft_r(*a, full_len, "a");
+		else
+			while ((*start)++ < full_len)
+				ft_rr(*a, full_len, "a");
 	}
 }
 
@@ -41,42 +67,38 @@ void	ft_final_rotate(int **a, int **refs)
 			ft_rr(*a, refs[1][1], "a");
 }
 
-void	ft_rotates(int **a, int **b, char ***r, int *lens)
+void	ft_rotates(int **a, int **b, int *r, int *lens)
 {
-	int	i[2];
-
-	ft_init(&i[0], &i[1], 0);
-	while (r[0][i[0]] && r[1][i[1]] && !ft_strncmp(r[0][i[0]], "ra", 3)
-			&& !ft_strncmp(r[1][i[1]], "rb", 3))
-		if (++i[0] && ++i[1])
+	if (!r)
+		return ;
+	while (r[0] > 0 && r[1] > 0)
+		if (r[0]-- > 0 && r[1]-- > 0)
 			ft_r_all(*a, *b, lens[0], lens[1]);
-	while (r[0][i[0]] && r[1][i[1]] && !ft_strncmp(r[0][i[0]], "rra", 4)
-			&& !ft_strncmp(r[1][i[1]], "rrb", 4))
-		if (++i[0] && ++i[1])
+	while (r[0] < 0 && r[1] < 0)
+		if (r[0]++ < 0 && r[1]++ < 0)
 			ft_rr_all(*a, *b, lens[0], lens[1]);
-	while (r[0][i[0]] && !ft_strncmp(r[0][i[0]], "ra", 3))
-		if (++i[0])
+	while (r[0] > 0)
+		if (r[0]-- > 0)
 			ft_r(*a, lens[0], "a");
-	while (r[0][i[0]] && !ft_strncmp(r[0][i[0]], "rra", 4))
-		if (++i[0])
+	while (r[0] < 0)
+		if (r[0]++ < 0)
 			ft_rr(*a, lens[0], "a");
-	while (r[1][i[1]] && !ft_strncmp(r[1][i[1]], "rb", 3))
-		if (++i[1])
+	while (r[1] > 0)
+		if (r[1]-- > 0)
 			ft_r(*b, lens[1], "b");
-	while (r[1][i[1]] && !ft_strncmp(r[1][i[1]], "rrb", 4))
-		if (++i[1])
+	while (r[1] < 0)
+		if (r[1]++ < 0)
 			ft_rr(*b, lens[1], "b");
-	ft_free(0, 0, r[0], r[1]);
 	free(r);
 }
 
 void	ft_sort(int full_len, int **a, int **b, int **refs)
 {
-	int		i[3];
-	int		*min;
-	int		*mvts;
-	char	**rotates_a;
-	char	**rotates_b;
+	int	i[3];
+	int	*min;
+	int	*mvts;
+	int	rotates_a;
+	int	rotates_b;
 
 	while (refs[1][1] != full_len)
 	{
@@ -95,6 +117,6 @@ void	ft_sort(int full_len, int **a, int **b, int **refs)
 		ft_p(b, a, full_len - refs[1][1], refs[1][1]);
 		ft_putendl_fd("pa", 1);
 		refs[1][1]++;
-		ft_free(min, mvts, rotates_a, rotates_b);
+		ft_free(min, mvts, NULL, NULL);
 	}
 }

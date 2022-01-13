@@ -12,20 +12,20 @@
 
 #include "push_swap.h"
 
-int	*ft_intdup(int *x, int len)
+int	*ft_refadup(int *x, int len)
 {
 	int	i;
+	int	j;
 	int	*cpy;
 
-	i = 0;
+	i = 1;
+	j = 2;
 	cpy = (int *)malloc(len * sizeof(int));
 	if (!cpy)
 		return (0);
+	cpy[0] = x[0];
 	while (i < len)
-	{
-		cpy[i] = x[i];
-		i++;
-	}
+		cpy[i++] = x[j++];
 	return (cpy);
 }
 
@@ -61,6 +61,8 @@ int	*ft_refa_ext00(int i, int *a, int full_len, int t)
 	int	*temp;
 
 	temp = (int *)malloc(sizeof(int) * 1000);
+	if (!temp)
+		return (NULL);
 	j = i;
 	temp[0] = i;
 	temp[1] = 1;
@@ -83,21 +85,20 @@ void	ft_refa_ext01(int *x, int y, int *z, int t)
 int	*ft_refa(int *a, int full_len)
 {
 	int	i[2];
-	int	*tempi;
 	int	*temp;
 	int	*actual;
 
-	actual = (int *)malloc(sizeof(int) * 2);
-	ft_init(&i[0], &actual[0], &actual[1]);
+	actual = NULL;
+	i[0] = 0;
 	while (++i[0] < full_len)
 	{
 		i[1] = a[i[0]];
 		temp = ft_refa_ext00(i[0], a, full_len, i[1]);
-		if (actual[1] < temp[1])
+		if (!actual || (actual && actual[1] < temp[1]))
 		{
-			tempi = actual;
+			if (actual)
+				free(actual);
 			actual = ft_intdup(temp, temp[1] + 1);
-			free(tempi);
 		}
 		free(temp);
 		i[0]++;

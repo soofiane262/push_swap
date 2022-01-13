@@ -66,6 +66,8 @@ void	ft_join_lens(int **min, int alen, int blen)
 {
 	free(*min);
 	(*min) = (int *)malloc(sizeof(int) * 2);
+	if (!(*min))
+		return ;
 	(*min)[0] = alen;
 	(*min)[1] = blen;
 }

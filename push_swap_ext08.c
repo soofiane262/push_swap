@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   push_swap_ext08.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-mars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,31 +12,51 @@
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	ft_s(int *x, char *c)
 {
-	int		*a;
-	int		*b;
-	int		*lens;
-	int		**refs;
+	int		temp;
+	char	*s;
 
-	lens = (int *)malloc(sizeof(int) * 2);
-	if (!lens)
+	temp = *x;
+	*x = *(x + 1);
+	*(x + 1) = temp;
+	s = ft_strjoin("s", c);
+	if (!s)
+		return ;
+	ft_putendl_fd(s, 1);
+	free(s);
+}
+
+int	*ft_intdup(int *x, int len)
+{
+	int	i;
+	int	*cpy;
+
+	i = 0;
+	cpy = (int *)malloc(len * sizeof(int));
+	if (!cpy)
 		return (0);
-	lens[0] = ac - 1;
-	lens[1] = 0;
-	a = ft_args_check(ac, av);
-	ft_exit(a, lens, 0, NULL);
-	b = (int *)malloc(sizeof(int));
-	ft_exit(b, a, lens, NULL);
-	refs = (int **)malloc(sizeof(int *));
-	if (!refs)
+	while (i < len)
 	{
-		free(lens);
-		ft_exit(NULL, b, 0, NULL);
+		cpy[i] = x[i];
+		i++;
 	}
-	refs[0] = ft_ref(ac, a, refs);
-	ft_gnl(&a, &b, refs, lens);
-	ft_checker(a, b, refs, lens);
-	free(a);
-	return (0);
+	return (cpy);
+}
+
+int	*ft_intdup2(int *x, int len)
+{
+	int	i;
+	int	*cpy;
+
+	i = 0;
+	cpy = (int *)malloc(len * sizeof(int));
+	if (!cpy)
+		return (0);
+	while (i < len - 1)
+	{
+		cpy[i] = x[i];
+		i++;
+	}
+	return (cpy);
 }

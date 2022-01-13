@@ -22,10 +22,13 @@ CFLAGS	=	-Wall -Wextra -Werror
 
 SRCS	=	push_swap_ext00.c push_swap_ext01.c push_swap_ext02.c\
 			push_swap_ext03.c push_swap_ext04.c push_swap_ext05.c\
-			push_swap_ext06.c push_swap_ext07.c checker_ext.c\
+			push_swap_ext06.c push_swap_ext07.c  push_swap_ext08.c\
+			checker_ext00.c checker_ext01.c\
 			gnl/get_next_line.c gnl/get_next_line_utils.c
 
 OBJS	=	$(SRCS:.c=.o)
+
+GNL		=	get_next_line.o get_next_line_utils.o
 
 PGM		=	push_swap.c
 
@@ -51,7 +54,7 @@ bonus: $(OBJS) $(CHK) $(HDFL)
 
 clean:
 	@(cd libft/; make clean;)
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(GNL)
 
 fclean:
 	@(cd libft/; make fclean;)

@@ -12,6 +12,25 @@
 
 #include "push_swap.h"
 
+void	ft_little_sort(int **a, int full_len, int **refs)
+{
+	if (full_len == 2 || full_len == 3)
+	{
+		if (full_len == 2 && (*a)[0] > (*a)[1])
+			ft_s(*a, "a");
+		if (full_len == 3 && (*a)[0] > (*a)[1] && (*a)[0] > (*a)[2])
+			ft_r(*a, full_len, "a");
+		if (full_len == 3 && (*a)[0] < (*a)[1] && (*a)[1] > (*a)[2])
+			ft_rr(*a, full_len, "a");
+		if (full_len == 3 && (*a)[0] > (*a)[1] && (*a)[1] < (*a)[2])
+			ft_s(*a, "a");
+		ft_free(*a, refs[0], NULL, NULL);
+		free(refs[1]);
+		free(refs);
+		exit(0);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	int	*a;
@@ -24,7 +43,8 @@ int	main(int ac, char **av)
 		ft_exit(NULL, NULL, NULL, refs);
 	refs[0] = ft_ref(ac, a, refs);
 	refs[1] = ft_refa(a, ac - 1);
-	ft_check_sort(a, refs, ac - 1);
+	ft_little_sort(&a, ac - 1, refs);
+	ft_check_sort(&a, refs, ac - 1);
 	b = ft_make_b(ac - 1, &a, refs);
 	ft_sort(ac - 1, &a, &b, refs);
 	ft_final_rotate(&a, refs);
