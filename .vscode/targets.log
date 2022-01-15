@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `push_swap_ext00.o', needed by `push_swap'.  Stop.
  
 
-# Make data base, printed on Thu Jan 13 01:32:25 2022
+# Make data base, printed on Sat Jan 15 04:57:35 2022
 
 # Variables
 
@@ -45,11 +45,11 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 29)
 OBJS = $(SRCS:.c=.o)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cd6000339h/T/vscode-ipc-ffa96350-e321-4774-8bec-dd4a29071a02.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cd6000339h/T/vscode-ipc-523d645c-f2f1-4a46-9209-1b495c8b2c98.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.MA3QvsRftq/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.xt8hNYbaO3/Render
 # environment
 PATH = /Users/sel-mars/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -67,7 +67,7 @@ LIB = libpush_swap.a
 # makefile (from `Makefile', line 33)
 PGM = push_swap.c
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.6rI21kE89n/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.bC43YUdQzf/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -83,7 +83,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProce
 # environment
 HOME = /Users/sel-mars
 # default
-MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/sel-mars/Library/Application Support/Code/CachedData/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247
 # environment
@@ -121,7 +121,7 @@ LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 # default
 .VARIABLES := 
 # environment
@@ -137,13 +137,15 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.1228
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000004.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x18D30:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # makefile (from `Makefile', line 31)
@@ -158,6 +160,8 @@ CHK = checker.c
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
@@ -169,9 +173,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 20949
+VSCODE_PID = 6855
 # variable set hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=7/112=6%
+# Load=80/1024=8%, Rehash=0, Collisions=6/112=5%
 
 # Pattern-specific Variable Values
 
@@ -179,13 +183,12 @@ VSCODE_PID = 20949
 
 # Directories
 
-# . (device 16777227, inode 3852043): 23 files, no impossibilities.
+# . (device 16777227, inode 3868797): 22 files, no impossibilities.
 
-# 23 files, no impossibilities in 1 directories.
+# 22 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
- 
 # No implicit rules.
 
 # Files
@@ -243,7 +246,8 @@ push_swap_ext07.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-13 01:32:21
+ 
+#  Last modified 2022-01-15 04:56:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -273,24 +277,21 @@ push_swap_ext05.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-bonus: push_swap_ext00.o push_swap_ext01.o push_swap_ext02.o push_swap_ext03.o push_swap_ext04.o push_swap_ext05.o push_swap_ext06.o push_swap_ext07.o push_swap_ext08.o checker_ext00.o checker_ext01.o gnl/get_next_line.o gnl/get_next_line_utils.o checker.c push_swap.h
+bonus: push_swap checker.c
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 50):
-	@(cd libft/; make;)
-	@$(CC) $(CFLAGS) -c $(SRCS) -I $(HDFL)
-	@$(AR) $(LIB) $(OBJS) $(CHOBJ)
 	@$(CC) $(CFLAGS) $(CHK) -L./libft/ -lft -L. -lpush_swap -o checker
 	
 
-fclean:
+fclean: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 60):
+#  commands to execute (from `Makefile', line 57):
 	@(cd libft/; make fclean;)
 	@$(RM) $(OBJS) $(NAME) checker
 	
@@ -318,7 +319,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 56):
+#  commands to execute (from `Makefile', line 53):
 	@(cd libft/; make clean;)
 	@$(RM) $(OBJS) $(GNL)
 	
@@ -375,7 +376,7 @@ checker.c:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=26/1024=3%, Rehash=0, Collisions=6/77=8%
+# Load=26/1024=3%, Rehash=0, Collisions=4/65=6%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -387,6 +388,6 @@ checker.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Jan 13 01:32:25 2022
+# Finished Make data base on Sat Jan 15 04:57:35 2022
 
  

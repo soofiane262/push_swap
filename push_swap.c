@@ -12,18 +12,57 @@
 
 #include "push_swap.h"
 
+void	ft_sort_two(int **x, int full_len, char *c)
+{
+	if (full_len == 2 && (*x)[0] > (*x)[1])
+		ft_s(*x, c);
+}
+
+void	ft_sort_three(int **x, int full_len, char *c)
+{
+	if (full_len == 3 && (*x)[0] > (*x)[1] && (*x)[0] > (*x)[2])
+		ft_r(*x, full_len, c);
+	if (full_len == 3 && (*x)[0] < (*x)[1] && (*x)[1] > (*x)[2])
+		ft_rr(*x, full_len, c);
+	if (full_len == 3 && (*x)[0] > (*x)[1] && (*x)[1] < (*x)[2])
+		ft_s(*x, c);
+}
+
+void	ft_sort_five(int **a, int full_len, int mid)
+{
+	int	i;
+	int	*b;
+
+	b = (int *)malloc(sizeof(int));
+	i = 0;
+	while (i < 2)
+	{
+		if ((*a)[0] < mid)
+		{
+			ft_p(a, &b, full_len - i, i);
+			ft_putendl_fd("pb", 1);
+			i++;
+		}
+		ft_rr(*a, full_len - i, "a");
+	}
+	ft_sort_three(a, 3, "a");
+	if (b[0] < b[1])
+		ft_s(b, "b");
+	ft_p(&b, a, 2, 3);
+	ft_putendl_fd("pa", 1);
+	ft_p(&b, a, 1, 4);
+	ft_putendl_fd("pa", 1);
+	free(b);
+}
+
 void	ft_little_sort(int **a, int full_len, int **refs)
 {
-	if (full_len == 2 || full_len == 3)
+	if (full_len == 2 || full_len == 3 || full_len == 5)
 	{
-		if (full_len == 2 && (*a)[0] > (*a)[1])
-			ft_s(*a, "a");
-		if (full_len == 3 && (*a)[0] > (*a)[1] && (*a)[0] > (*a)[2])
-			ft_r(*a, full_len, "a");
-		if (full_len == 3 && (*a)[0] < (*a)[1] && (*a)[1] > (*a)[2])
-			ft_rr(*a, full_len, "a");
-		if (full_len == 3 && (*a)[0] > (*a)[1] && (*a)[1] < (*a)[2])
-			ft_s(*a, "a");
+		ft_sort_two(a, full_len, "a");
+		ft_sort_three(a, full_len, "a");
+		if (full_len == 5)
+			ft_sort_five(a, full_len, refs[0][2]);
 		ft_free(*a, refs[0], NULL, NULL);
 		free(refs[1]);
 		free(refs);
@@ -42,9 +81,15 @@ int	main(int ac, char **av)
 	if (!refs)
 		ft_exit(NULL, NULL, NULL, refs);
 	refs[0] = ft_ref(ac, a, refs);
+	if (ac == 2)
+	{
+		ft_free(a, refs[0], NULL, NULL);
+		free(refs);
+		exit(0);
+	}
 	refs[1] = ft_refa(a, ac - 1);
-	ft_little_sort(&a, ac - 1, refs);
 	ft_check_sort(&a, refs, ac - 1);
+	ft_little_sort(&a, ac - 1, refs);
 	b = ft_make_b(ac - 1, &a, refs);
 	ft_sort(ac - 1, &a, &b, refs);
 	ft_final_rotate(&a, refs);

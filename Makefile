@@ -46,17 +46,14 @@ $(NAME): $(OBJS) $(PGM) $(HDFL)
 	@$(AR) $(LIB) $(OBJS)
 	@$(CC) $(CFLAGS) $(PGM) -L./libft/ -lft -L. -lpush_swap -o $(NAME)
 
-bonus: $(OBJS) $(CHK) $(HDFL) 
-	@(cd libft/; make;)
-	@$(CC) $(CFLAGS) -c $(SRCS) -I $(HDFL)
-	@$(AR) $(LIB) $(OBJS) $(CHOBJ)
+bonus: $(NAME) $(CHK)
 	@$(CC) $(CFLAGS) $(CHK) -L./libft/ -lft -L. -lpush_swap -o checker
 
 clean:
 	@(cd libft/; make clean;)
 	@$(RM) $(OBJS) $(GNL)
 
-fclean:
+fclean: clean
 	@(cd libft/; make fclean;)
 	@$(RM) $(OBJS) $(NAME) checker
 

@@ -16,8 +16,11 @@
 # include "gnl/get_next_line.h"
 
 void	ft_check_sort(int **a, int **refs, int full_len);
-void	ft_check_sort_ext(int **a, int i, int *start, int full_len);
+void	ft_check_sort_ext(int **a, int i, int start, int full_len);
 void	ft_little_sort(int **a, int full_len, int **refs);
+void	ft_sort_two(int **x, int full_len, char *c);
+void	ft_sort_three(int **x, int full_len, char *c);
+void	ft_sort_five(int **a, int full_len, int mid);
 void	ft_final_rotate(int **a, int **refs);
 void	ft_rotates(int **a, int **b, int *rotates, int *lens);
 void	ft_sort(int full_len, int **a, int **b, int **ref);

@@ -71,7 +71,7 @@ int	*ft_args_check(int ac, char **av)
 	int			*a;
 	long long	ret;
 
-	if (ac < 3)
+	if (ac == 1)
 		exit (0);
 	a = (int *)malloc(sizeof(int) * (ac - 1));
 	ft_exit(a, NULL, NULL, NULL);

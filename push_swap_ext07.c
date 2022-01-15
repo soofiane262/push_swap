@@ -21,14 +21,16 @@ void	ft_check_sort(int **a, int **refs, int full_len)
 	start = 0;
 	while (start < full_len && (*a)[start] != refs[0][0])
 		start++;
-	if (start)
-		i[0] = start;
-	while (i[0] < full_len && (*a)[i[0]] == refs[0][i[1]++])
-		i[0]++;
-	if (start)
-		while (i[2] < start && (*a)[i[2]] == refs[0][i[1]++])
-			i[2]++;
-	ft_check_sort_ext(a, i[2], &start, full_len);
+	i[0] = start;
+	while (i[0] < full_len && (*a)[i[0]] == refs[0][i[1]])
+		if (++i[0])
+			i[1]++;
+	while (i[2] < start && (*a)[i[2]] == refs[0][i[1]])
+	{
+		i[1]++;
+		i[2]++;
+	}
+	ft_check_sort_ext(a, i[2], start, full_len);
 	if ((!start && i[0] == full_len) || (start && i[2] == start))
 	{
 		ft_free(*a, refs[0], NULL, NULL);
@@ -39,15 +41,15 @@ void	ft_check_sort(int **a, int **refs, int full_len)
 	}
 }
 
-void	ft_check_sort_ext(int **a, int i, int *start, int full_len)
+void	ft_check_sort_ext(int **a, int i, int start, int full_len)
 {
-	if (i == *start)
+	if (i == start)
 	{
-		if (*start <= full_len / 2)
-			while ((*start)--)
+		if (start <= full_len / 2)
+			while (start--)
 				ft_r(*a, full_len, "a");
 		else
-			while ((*start)++ < full_len)
+			while (start++ < full_len)
 				ft_rr(*a, full_len, "a");
 	}
 }
