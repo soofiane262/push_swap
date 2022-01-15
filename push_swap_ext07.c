@@ -17,14 +17,14 @@ void	ft_check_sort(int **a, int **refs, int full_len)
 	int	i[3];
 	int	start;
 
-	ft_init(&i[0], &i[1], &i[2]);
-	start = 0;
+	ft_init(&start, &i[1], &i[2]);
 	while (start < full_len && (*a)[start] != refs[0][0])
 		start++;
-	i[0] = start;
 	while (i[0] < full_len && (*a)[i[0]] == refs[0][i[1]])
-		if (++i[0])
-			i[1]++;
+	{
+		i[0]++;
+		i[1]++;
+	}
 	while (i[2] < start && (*a)[i[2]] == refs[0][i[1]])
 	{
 		i[1]++;

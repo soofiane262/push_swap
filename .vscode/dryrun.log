@@ -1,4 +1,4 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/sel-mars/Desktop/42Cursus/06_push_swap/06_push_swap_WIP'
 gcc -Wall -Wextra -Werror   -c -o push_swap_ext00.o push_swap_ext00.c
 gcc -Wall -Wextra -Werror   -c -o push_swap_ext01.o push_swap_ext01.c
