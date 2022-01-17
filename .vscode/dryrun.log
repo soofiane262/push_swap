@@ -1,6 +1,7 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/sel-mars/Desktop/42Cursus/06_push_swap/06_push_swap_WIP'
+make: Entering directory `/Users/sel-mars/Desktop/42Cursus/06_push_swap/problem'
 gcc -Wall -Wextra -Werror   -c -o push_swap_ext00.o push_swap_ext00.c
+ 
 gcc -Wall -Wextra -Werror   -c -o push_swap_ext01.o push_swap_ext01.c
 gcc -Wall -Wextra -Werror   -c -o push_swap_ext02.o push_swap_ext02.c
 gcc -Wall -Wextra -Werror   -c -o push_swap_ext03.o push_swap_ext03.c
@@ -17,5 +18,5 @@ gcc -Wall -Wextra -Werror   -c -o gnl/get_next_line_utils.o gnl/get_next_line_ut
 gcc -Wall -Wextra -Werror -c push_swap_ext00.c push_swap_ext01.c push_swap_ext02.c push_swap_ext03.c push_swap_ext04.c push_swap_ext05.c push_swap_ext06.c push_swap_ext07.c  push_swap_ext08.c checker_ext00.c checker_ext01.c gnl/get_next_line.c gnl/get_next_line_utils.c -I push_swap.h
 ar rc libpush_swap.a push_swap_ext00.o push_swap_ext01.o push_swap_ext02.o push_swap_ext03.o push_swap_ext04.o push_swap_ext05.o push_swap_ext06.o push_swap_ext07.o push_swap_ext08.o checker_ext00.o checker_ext01.o gnl/get_next_line.o gnl/get_next_line_utils.o
 gcc -Wall -Wextra -Werror push_swap.c -L./libft/ -lft -L. -lpush_swap -o push_swap
-make: Leaving directory `/Users/sel-mars/Desktop/42Cursus/06_push_swap/06_push_swap_WIP'
+make: Leaving directory `/Users/sel-mars/Desktop/42Cursus/06_push_swap/problem'
  

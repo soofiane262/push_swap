@@ -41,16 +41,15 @@ int	ft_sort_ext01(int full_len, int **refs, int **min)
 	if ((*min)[1] <= (full_len - refs[1][1]) / 2)
 	{
 		i[1] = -1;
-		while (++i[1] < (*min)[1] && (*min)[0]-- >= 0)
+		while (++i[1] < (*min)[1])
 			count++;
 	}
 	else
 	{
 		i[1] = (*min)[1] - 1;
-		while (++i[1] < full_len - refs[1][1] && (*min)[0]-- >= 0)
+		while (++i[1] < full_len - refs[1][1])
 			count--;
 	}
-	(*min)[0]--;
 	return (count);
 }
 
@@ -73,20 +72,14 @@ void	ft_sort_ext03(int *i, int *start, int **a, int b_min)
 	}
 }
 
-int	ft_sort_ext04(int *ii, int *j, int **min, int **refs)
+int	ft_sort_ext04(int *i, int alen)
 {
-	int	i[2];
 	int	count;
 
-	while (*ii != refs[1][1] && *ii <= refs[1][1] / 2 && (*ii)--)
-			(*j)++;
-	i[0] = 0;
 	count = 0;
-	if (*j == *min[0])
-		while (--(*min)[0] >= 0)
-			count++;
+	if (*i <= alen / 2)
+		count = *i;
 	else
-		while (--(*min)[0] >= 0)
-			count--;
+		count = (alen - *i) * -1;
 	return (count);
 }
