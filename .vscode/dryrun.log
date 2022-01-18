@@ -1,7 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/sel-mars/Desktop/42Cursus/06_push_swap/problem'
 gcc -Wall -Wextra -Werror   -c -o push_swap_ext00.o push_swap_ext00.c
- 
 gcc -Wall -Wextra -Werror   -c -o push_swap_ext01.o push_swap_ext01.c
 gcc -Wall -Wextra -Werror   -c -o push_swap_ext02.o push_swap_ext02.c
 gcc -Wall -Wextra -Werror   -c -o push_swap_ext03.o push_swap_ext03.c

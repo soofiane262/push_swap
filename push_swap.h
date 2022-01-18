@@ -36,7 +36,7 @@ int		*ft_count_mvts(int full_len, int *a, int *b, int **refs);
 void	ft_count_mvts_ext00(int *i, int **refs, int *a, int *start);
 void	ft_count_mvts_ext01(int *i, int *a, int b_j, int start);
 void	ft_count_mvts_ext02(int *i, int full_len, int **refs, int *temp);
-void	ft_count_mvts_ext03(int *i, int **refs, int full_len, int *temp);
+void	ft_count_mvts_ext03(int *i, int full_len, int **refs, int *temp);
 int		*ft_make_b(int ac, int **a, int **refs);
 void	ft_rotate_before_push(int *i, int *len, int **a, int *refa);
 int		ft_check_dup(int *a, int i);

@@ -70,26 +70,6 @@ void	ft_little_sort(int **a, int full_len, int **refs)
 	}
 }
 
-void	ft_new_sort(int full_len, int **a, int **b, int **refs)
-{
-	// int	i;
-	// int	count;
-	// int	temp[1000];
-	// int	*idxs;
-
-	// idxs = (int *)malloc(sizeof(int) * full_len - refs[1][1]);
-	// count = 0;
-
-
-
-ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
-ft_putstr_fd("a", 1);
-ft_putnbrs(refs[1][1], *a);
-ft_putstr_fd("b", 1);
-ft_putnbrs(full_len - refs[1][1], *b);
-ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-}
-
 int	main(int ac, char **av)
 {
 	int	*a;
@@ -108,71 +88,11 @@ int	main(int ac, char **av)
 		exit(0);
 	}
 	refs[1] = ft_refa(a, ac - 1);
-
-
-
-
-// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-// ft_putstr_fd("a", 1);
-// ft_putnbrs(ac - 1, a);
-// ft_putstr_fd("ref", 1);
-// ft_putnbrs(ac - 1, refs[0]);
-// ft_putstr_fd("refa", 1);
-// ft_putnbrs(refs[1][1] + 1, refs[1]);
-// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-
-
-
-
-
-
 	ft_check_sort(&a, refs, ac - 1);
 	ft_little_sort(&a, ac - 1, refs);
 	b = ft_make_b(ac - 1, &a, refs);
-
-
-
-
-
-// ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
-// ft_putstr_fd("a", 1);
-// ft_putnbrs(refs[1][1], a);
-// ft_putstr_fd("b", 1);
-// ft_putnbrs(ac - refs[1][1] - 1, b);
-// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-
-
-
-
-/////////////////////////////////////////////
 	ft_sort(ac - 1, &a, &b, refs);
-/////////////////////////////////////////////
-
-
-/////////////////////////////////////////////
-	// ft_new_sort(ac - 1, &a, &b, refs);
-/////////////////////////////////////////////
-
-
-
-
-
-
-
-
 	ft_final_rotate(&a, refs);
-
-
-
-
-// ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
-// ft_putstr_fd("sorted", 1);
-// ft_putnbrs(ac - 1, a);
-// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-
-
-
-
 	ft_free(a, b, NULL, NULL);
 	ft_free(refs[0], refs[1], NULL, NULL);
 	free(refs);

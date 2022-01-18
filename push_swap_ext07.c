@@ -106,24 +106,6 @@ void	ft_sort(int full_len, int **a, int **b, int **refs)
 	{
 		i[0] = 0;
 		mvts = ft_count_mvts(full_len, *a, *b, refs);
-
-
-
-
-
-// ft_putstr_fd("\n---------------------------------------------------------\n\n", 1);
-// ft_putstr_fd("a", 1);
-// ft_putnbrs(refs[1][1], *a);
-// ft_putstr_fd("b", 1);
-// ft_putnbrs(full_len - refs[1][1], *b);
-// ft_putstr_fd("mvts", 1);
-// ft_putnbrs(full_len - refs[1][1], mvts);
-// ft_putstr_fd("---------------------------------------------------------\n\n", 1);
-
-
-
-
-
 		min = ft_sort_ext00(&i[0], full_len, refs, mvts);
 		rotates_b = ft_sort_ext01(full_len, refs, &min);
 		ft_init(&i[0], &i[1], &i[2]);

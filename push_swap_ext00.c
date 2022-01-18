@@ -46,24 +46,12 @@ void	ft_rotate_before_push(int *i, int *len, int **a, int *refa)
 		i[2]++;
 	}
 	i[1]++;
-	// if (i[2] + 1 <= len[0] / 2)
-	// {
-		while (i[2] >= 0)
-		{
-			ft_r(*a, len[0], "a");
-			i[2]--;
-			i[0]++;
-		}
-	// }
-	// else
-	// {
-	// 	while (i[2] + 1 < len[0])
-	// 	{
-	// 		ft_rr(*a, len[0], "a");
-	// 		i[2]++;
-	// 		i[0]++;
-	// 	}
-	// }
+	while (i[2] >= 0)
+	{
+		ft_r(*a, len[0], "a");
+		i[2]--;
+		i[0]++;
+	}
 }
 
 void	ft_push(int **a, int **b, int full_len, int *len)

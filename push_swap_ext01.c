@@ -35,20 +35,28 @@ void	ft_count_mvts_ext02(int *i, int full_len, int **refs, int *temp)
 {
 	if (i[0] != refs[1][1] && i[1] != full_len - refs[1][1]
 		&& i[0] <= refs[1][1] / 2 && i[1] <= (full_len - refs[1][1]) / 2)
+	{
 		while (i[0] && i[1])
 		{
 			(*temp)++;
 			i[0]--;
 			i[1]--;
 		}
+	}
 	else if (i[0] != refs[1][1] && i[1] != full_len - refs[1][1]
 		&& i[0] > refs[1][1] / 2 && i[1] > (full_len - refs[1][1]) / 2)
+	{
 		while (i[0] > refs[1][1] && i[1] > full_len - refs[1][1])
 		{
 			(*temp)++;
 			i[0]--;
 			i[1]--;
 		}
+	}
+}
+
+void	ft_count_mvts_ext03(int *i, int full_len, int **refs, int *temp)
+{
 	if (i[0] != refs[1][1] && i[0] <= refs[1][1] / 2)
 		(*temp) += i[0];
 	else if (i[0] != refs[1][1] && i[0] > refs[1][1] / 2)
@@ -59,19 +67,6 @@ void	ft_count_mvts_ext02(int *i, int full_len, int **refs, int *temp)
 	else if (i[1] != full_len - refs[1][1]
 		&& i[1] > (full_len - refs[1][1]) / 2)
 		*(temp) += full_len - refs[1][1] - i[1];
-}
-
-void	ft_count_mvts_ext03(int *i, int **refs, int full_len, int *temp)
-{
-	if (*i != full_len - refs[1][1]
-			&& *i <= (full_len - refs[1][1]) / 2)
-		while ((*i)--)
-			(*temp)++;
-	else if (*i != full_len - refs[1][1]
-				&& *i > (full_len - refs[1][1]) / 2)
-		while ((*i)++ < full_len - refs[1][1])
-			(*temp)++;
-	(*temp)++;
 }
 
 int	*ft_count_mvts(int full_len, int *a, int *b, int **refs)
@@ -94,9 +89,8 @@ int	*ft_count_mvts(int full_len, int *a, int *b, int **refs)
 		while (i[0] < refs[1][1] && a[i[0]] < b[j])
 			i[0]++;
 		ft_count_mvts_ext01(&i[0], a, b[j], start);
-		// ft_count_mvts_ext04();
 		ft_count_mvts_ext02(i, full_len, refs, &temp[j]);
-		// ft_count_mvts_ext03(&i[1], refs, full_len, &temp[j]);
+		ft_count_mvts_ext03(i, full_len, refs, &temp[j]);
 		j++;
 	}
 	mvts = ft_intdup(temp, j);
