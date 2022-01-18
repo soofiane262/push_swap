@@ -17,7 +17,7 @@ void	ft_check_sort(int **a, int **refs, int full_len)
 	int	i[3];
 	int	start;
 
-	ft_init(&start, &i[1], &i[2]);
+	ft_init(&start, &i[0], &i[1], &i[2]);
 	while (start < full_len && (*a)[start] != refs[0][0])
 		start++;
 	while (i[0] < full_len && (*a)[i[0]] == refs[0][i[1]])
@@ -104,11 +104,10 @@ void	ft_sort(int full_len, int **a, int **b, int **refs)
 
 	while (refs[1][1] != full_len)
 	{
-		i[0] = 0;
 		mvts = ft_count_mvts(full_len, *a, *b, refs);
-		min = ft_sort_ext00(&i[0], full_len, refs, mvts);
+		min = ft_sort_ext00(full_len, refs, mvts);
 		rotates_b = ft_sort_ext01(full_len, refs, &min);
-		ft_init(&i[0], &i[1], &i[2]);
+		ft_init(&i[0], &i[1], &i[2], 0);
 		ft_sort_ext02(&i[0], &i[2], a, refs);
 		while (i[0] < refs[1][1] && (*a)[i[0]] < (*b)[min[1]])
 			i[0]++;

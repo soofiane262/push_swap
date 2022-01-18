@@ -12,21 +12,23 @@
 
 #include "push_swap.h"
 
-int	*ft_sort_ext00(int *i, int full_len, int **refs, int *mvts)
+int	*ft_sort_ext00(int full_len, int **refs, int *mvts)
 {
+	int	i;
 	int	*min;
 
 	min = (int *)malloc(sizeof(int) * 2);
 	min[0] = mvts[0];
 	min[1] = 0;
-	while (*i < full_len - refs[1][1])
+	i = 0;
+	while (i < full_len - refs[1][1])
 	{
-		if (mvts[*i] < min[0])
+		if (mvts[i] <= min[0])
 		{
-			min[0] = mvts[*i];
-			min[1] = *i;
+			min[0] = mvts[i];
+			min[1] = i;
 		}
-		(*i)++;
+		i++;
 	}
 	return (min);
 }

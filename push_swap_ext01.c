@@ -83,7 +83,7 @@ int	*ft_count_mvts(int full_len, int *a, int *b, int **refs)
 	j = 0;
 	while (j != full_len - refs[1][1])
 	{
-		ft_init(&start, &i[0], 0);
+		ft_init(&start, &i[0], 0, 0);
 		i[1] = j;
 		ft_count_mvts_ext00(&i[0], refs, a, &start);
 		while (i[0] < refs[1][1] && a[i[0]] < b[j])

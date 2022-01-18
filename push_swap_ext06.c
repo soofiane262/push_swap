@@ -39,13 +39,15 @@ void	ft_free_arr(char **arr)
 	arr = NULL;
 }
 
-void	ft_init(int *i, int *j, int *k)
+void	ft_init(int *i, int *j, int *k, int *l)
 {
 	*i = 0;
 	if (j)
 		*j = 0;
 	if (k)
 		*k = 0;
+	if (l)
+		*l = 0;
 }
 
 void	ft_putnbrs(int len, int *x)

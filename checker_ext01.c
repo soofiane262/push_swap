@@ -50,11 +50,11 @@ void	ft_execute_inst(int **a, int **b, char *gnl, int **len)
 	else if (!ft_strncmp(gnl, "pb\n", 4))
 		ft_p_checker(a, b, (*len)[0]--, (*len)[1]++);
 	else if (!ft_strncmp(gnl, "sa\n", 4))
-		ft_s_checker(*a);
+		ft_s_checker(*a, (*len)[0]);
 	else if (!ft_strncmp(gnl, "sb\n", 4))
-		ft_s_checker(*b);
+		ft_s_checker(*b, (*len)[1]);
 	else if (!ft_strncmp(gnl, "ss\n", 4))
-		ft_s_all_checker(a, b);
+		ft_s_all_checker(a, b, (*len)[0], (*len)[1]);
 	else if (!ft_strncmp(gnl, "ra\n", 4))
 		ft_r_checker(*a, (*len)[0]);
 	else if (!ft_strncmp(gnl, "rb\n", 4))

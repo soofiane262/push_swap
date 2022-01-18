@@ -19,6 +19,8 @@ void	ft_p_checker(int **x, int **y, int xlen, int ylen)
 	int	*ptrx;
 	int	*ptry;
 
+	if (!xlen)
+		return ;
 	temp = (*x)[0];
 	i = ylen;
 	ptry = ft_intdup2(*y, ylen + 1);
@@ -35,19 +37,21 @@ void	ft_p_checker(int **x, int **y, int xlen, int ylen)
 	*x = ptrx;
 }
 
-void	ft_s_checker(int *x)
+void	ft_s_checker(int *x, int xlen)
 {
 	int	temp;
 
+	if (!xlen)
+		return ;
 	temp = *x;
 	*x = *(x + 1);
 	*(x + 1) = temp;
 }
 
-void	ft_s_all_checker(int **x, int **y)
+void	ft_s_all_checker(int **x, int **y, int xlen, int ylen)
 {
-	ft_s_checker(*x);
-	ft_s_checker(*y);
+	ft_s_checker(*x, xlen);
+	ft_s_checker(*y, ylen);
 }
 
 void	ft_r_checker(int *x, int xlen)
@@ -55,6 +59,8 @@ void	ft_r_checker(int *x, int xlen)
 	int		i;
 	int		temp;
 
+	if (!xlen)
+		return ;
 	temp = x[0];
 	i = 0;
 	while (i < xlen - 1)
@@ -70,6 +76,8 @@ void	ft_rr_checker(int *x, int xlen)
 	int		i;
 	int		temp;
 
+	if (!xlen)
+		return ;
 	temp = x[xlen - 1];
 	i = xlen - 1;
 	while (i > 0)

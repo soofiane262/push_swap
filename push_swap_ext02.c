@@ -15,17 +15,18 @@
 int	*ft_refadup(int *x, int len)
 {
 	int	i;
-	int	j;
 	int	*cpy;
 
-	i = 1;
-	j = 2;
 	cpy = (int *)malloc(len * sizeof(int));
 	if (!cpy)
 		return (0);
 	cpy[0] = x[0];
+	i = 1;
 	while (i < len)
-		cpy[i++] = x[j++];
+	{
+		cpy[i] = x[i + 1];
+		i++;
+	}
 	return (cpy);
 }
 
@@ -89,7 +90,7 @@ int	*ft_refa(int *a, int full_len)
 	int	*actual;
 
 	actual = NULL;
-	i[0] = 0;
+	i[0] = -1;
 	while (++i[0] < full_len)
 	{
 		i[1] = a[i[0]];

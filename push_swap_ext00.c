@@ -15,13 +15,10 @@
 int	*ft_sorted_refa(int *refa_len, int **refs)
 {
 	int	i[2];
-	int	*temp;
 	int	*refa;
 
-	temp = ft_intdup(refs[1], refs[1][1] + 1);
-	(*refa_len) = temp[1];
-	refa = ft_refadup(temp, *refa_len + 1);
-	free(temp);
+	(*refa_len) = refs[1][1];
+	refa = ft_refadup(refs[1], refs[1][1]);
 	i[0] = 0;
 	while (i[0] < *refa_len)
 	{
@@ -37,21 +34,14 @@ int	*ft_sorted_refa(int *refa_len, int **refs)
 	return (refa);
 }
 
-void	ft_rotate_before_push(int *i, int *len, int **a, int *refa)
+void	ft_rotate_before_push(int *i, int *len, int **a, int **b)
 {
-	i[2] = 0;
-	while (i[1] + 1 < len[1] && refa[i[1]] + 1 == refa[i[1] + 1])
-	{
-		i[1]++;
-		i[2]++;
-	}
-	i[1]++;
-	while (i[2] >= 0)
-	{
+	if (len[2] - len[0] <= 2)
 		ft_r(*a, len[0], "a");
-		i[2]--;
-		i[0]++;
-	}
+	else
+		ft_r_all(*a, *b, len[0], len[2] - len[0]);
+	i[0]++;
+	i[1]++;
 }
 
 void	ft_push(int **a, int **b, int full_len, int *len)
@@ -63,25 +53,26 @@ void	ft_push(int **a, int **b, int full_len, int *len)
 
 int	*ft_make_b(int full_len, int **a, int **refs)
 {
-	int	i[3];
-	int	len[2];
+	int	i[2];
+	int	len[3];
 	int	*b;
 	int	*refa;
 
 	len[0] = full_len;
+	len[2] = full_len;
 	refa = ft_sorted_refa(&len[1], refs);
 	b = (int *)malloc(sizeof(int));
 	ft_exit(b, *a, refs[0], refs);
-	ft_init(&i[0], &i[1], &i[2]);
+	ft_init(&i[0], &i[1], 0, 0);
 	while (len[0] != len[1])
 	{
-		if (refa[i[1]] == i[0])
-			ft_rotate_before_push(i, len, a, refa);
-		else
+		if (refa[i[1]] != i[0])
 		{
 			ft_push(a, &b, full_len, &len[0]);
 			i[0]++;
 		}
+		else
+			ft_rotate_before_push(i, len, a, &b);
 	}
 	free(refa);
 	return (b);

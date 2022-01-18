@@ -51,7 +51,7 @@ bonus: $(NAME) $(CHK)
 
 clean:
 	@(cd libft/; make clean;)
-	@$(RM) $(OBJS) $(GNL)
+	@$(RM) $(OBJS) $(GNL) $(LIB)
 
 fclean: clean
 	@(cd libft/; make fclean;)
